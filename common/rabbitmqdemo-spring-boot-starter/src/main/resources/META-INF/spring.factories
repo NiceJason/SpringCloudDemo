@@ -1,0 +1,5 @@
+# 单独使用rabbitmqdemo的是时候，需要将下面内容都屏蔽掉
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+#  customConfig.AConfig,\
+#  customConfig.BConfig,\
+#  com.rabbitmqdemo.demo.config.RabbitmqConfig

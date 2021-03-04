@@ -1,0 +1,33 @@
+server:
+  port: 8021
+spring:
+
+  application:
+    name: rabbitmq-provider
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: TestHost
+
+    publisher-confirm-type: correlated
+    publisher-returns: true
+
+    listener:
+      simple:
+        retry:
+          ####开启消费者（程序出现异常的情况下会）进行重试
+          enabled: true
+          ####最大重试次数
+          max-attempts: 3
+          ####重试间隔次数
+          initial-interval: 3000
+
+
+sunspring:
+  dlx:
+    dlxExchange: sunspring_dlx_exchange
+    dlxQueue: sunspring.dlx.queue
+    dlxRoutingKey: dlx
