@@ -15,12 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class NacosTestController {
 
-    @Value("{config.info}")
-    private String configInfo;
+    //系统缓存过期时间允许最小值（秒）
+    @Value("${system.cache.min.expire}")
+    private long minExpire;
+
+    //系统缓存过期时间允许最大值（秒）
+    @Value("${system.cache.max.expire}")
+    private long maxExpire;
 
     @GetMapping("/config/info")
     public String getConfigInfo() {
-        return configInfo;
+        return minExpire+" "+maxExpire;
     }
 
 }
