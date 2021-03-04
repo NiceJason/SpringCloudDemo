@@ -17,6 +17,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!--AOP相关-->
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -32,4 +37,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -1,7 +1,8 @@
 package com.springclouddemo.redis;
 
 import com.springclouddemo.redis.service.CacheService;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +10,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.*;
-import org.springframework.transaction.event.TransactionalEventListener;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class RedisdemoApplicationTests {
+@ContextConfiguration()
+public class RedisdemoApplicationTests {
 
     @Autowired
     RedisTemplate<String,Object> redisTemplate;
@@ -25,7 +29,7 @@ class RedisdemoApplicationTests {
     RedissonClient redissonClient;
 
     @Test
-    void redisTest() throws Exception{
+    public void redisTest() throws Exception{
         RedisOperations aa = null;
         RedisConnection bb =null;
         //往redis插入5种类型的数据

@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
     <groupId>com.nicebin</groupId>
-    <artifactId>blank</artifactId>
+    <artifactId>blank-service</artifactId>
     <version>1.0.0</version>
     <name>blank</name>
     <description>银行服务</description>

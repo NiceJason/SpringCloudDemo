@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
     <groupId>com.nicebin</groupId>
-    <artifactId>business</artifactId>
+    <artifactId>business-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>business</name>
     <description>商家服务</description>

@@ -1,9 +1,11 @@
 package com.rabbitmqdemo.demo.config;
 
-import org.springframework.amqp.core.ReturnedMessage;
+import com.rabbitmqdemo.demo.entity.TestInfo;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.boot.autoconfigure.amqp.RabbitTemplateConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,16 +34,16 @@ public class RabbitTemplateConfig {
                 System.out.println();
             }
         });
-
-        rabbitTemplate.setReturnsCallback(new RabbitTemplate.ReturnsCallback(){
-
+        rabbitTemplate.setReturnCallback(new RabbitTemplate.ReturnCallback() {
             @Override
-            public void returnedMessage(ReturnedMessage returnedMessage) {
-                System.out.println("ReturnCallback:     "+"消息："+returnedMessage.getMessage());
-                System.out.println("ReturnCallback:     "+"回应码："+returnedMessage.getReplyCode());
-                System.out.println("ReturnCallback:     "+"回应信息："+returnedMessage.getReplyText());
-                System.out.println("ReturnCallback:     "+"交换机："+returnedMessage.getExchange());
-                System.out.println("ReturnCallback:     "+"路由键："+returnedMessage.getRoutingKey());
+            public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
+                Jackson2JsonMessageConverter converter = new Jackson2JsonMessageConverter();
+                TestInfo testInfo = (TestInfo) converter.fromMessage(message);
+                System.out.println("ReturnCallback:     "+"消息："+testInfo.getInfo());
+                System.out.println("ReturnCallback:     "+"回应码："+replyCode);
+                System.out.println("ReturnCallback:     "+"回应信息："+replyText);
+                System.out.println("ReturnCallback:     "+"交换机："+exchange);
+                System.out.println("ReturnCallback:     "+"路由键："+routingKey);
                 System.out.println();
             }
         });
