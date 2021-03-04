@@ -1,13 +1,13 @@
-package com.nicebin.business;
+package com.nicebin.blank;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BusinessApplication {
+public class BlankServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BusinessApplication.class, args);
+        SpringApplication.run(BlankServiceApplication.class, args);
     }
 
 }

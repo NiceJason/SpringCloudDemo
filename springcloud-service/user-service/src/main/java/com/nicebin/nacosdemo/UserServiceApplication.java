@@ -1,13 +1,13 @@
-package com.nicebin.blank;
+package com.nicebin.nacosdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BlankApplication {
+public class UserServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BlankApplication.class, args);
+        SpringApplication.run(UserServiceApplication.class, args);
     }
 
 }
