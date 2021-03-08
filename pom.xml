@@ -23,6 +23,8 @@
         <!--公共类版本-->
         <common-core.version>1.0.0</common-core.version>
         <springcloud-config>1.0.0</springcloud-config>
+        <redisdemo-spring-boot-starter.version>1.0.0</redisdemo-spring-boot-starter.version>
+        <rabbitmqdemo-spring-boot-starter.version>1.0.0</rabbitmqdemo-spring-boot-starter.version>
 
         <aspectj.aspectjrt.version>1.8.10</aspectj.aspectjrt.version>
         <aspectj.aspectjweaver.version>1.9.4</aspectj.aspectjweaver.version>
@@ -33,6 +35,7 @@
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
         <spring-session-data-redis.version>2.1.2.RELEASE</spring-session-data-redis.version>
+        <nacos-spring-context.version>1.0.0</nacos-spring-context.version>
     </properties>
 
     <dependencies>
@@ -81,6 +84,20 @@
                 <groupId>com.nicebin</groupId>
                 <artifactId>springcloud-config</artifactId>
                 <version>${springcloud-config}</version>
+            </dependency>
+
+            <!--公共缓存-->
+            <dependency>
+                <groupId>com.nicebin</groupId>
+                <artifactId>redisdemo-spring-boot-starter</artifactId>
+                <version>${redisdemo-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--公共队列-->
+            <dependency>
+                <groupId>com.nicebin</groupId>
+                <artifactId>rabbitmqdemo-spring-boot-starter</artifactId>
+                <version>${rabbitmqdemo-spring-boot-starter.version}</version>
             </dependency>
 
             <dependency>
@@ -134,6 +151,12 @@
                 <groupId>org.springframework.session</groupId>
                 <artifactId>spring-session-data-redis</artifactId>
                 <version>${spring-session-data-redis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-spring-context</artifactId>
+                <version>${nacos-spring-context.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

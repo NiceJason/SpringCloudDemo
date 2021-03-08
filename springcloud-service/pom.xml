@@ -18,6 +18,44 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <dependencies>
+
+        <!--公共类-->
+        <dependency>
+            <groupId>com.nicebin</groupId>
+            <artifactId>common-core</artifactId>
+        </dependency>
+
+        <!--公共配置-->
+        <dependency>
+            <groupId>com.nicebin</groupId>
+            <artifactId>springcloud-config</artifactId>
+        </dependency>
+
+        <!--公共缓存-->
+        <dependency>
+            <groupId>com.nicebin</groupId>
+            <artifactId>redisdemo-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!--公共队列-->
+        <dependency>
+            <groupId>com.nicebin</groupId>
+            <artifactId>rabbitmqdemo-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+    </dependencies>
+
     <modules>
         <module>blank-service</module>
         <module>business-service</module>
