@@ -4,9 +4,11 @@ import com.alibaba.fastjson.parser.ParserConfig;
 import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import com.springclouddemo.redis.cache.RedisCacheMgr;
 import com.springclouddemo.redis.constant.SystemCacheEnum;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +33,9 @@ import java.util.Map;
  * @date 2019/11/13 17:02
  */
 @Configuration
+@ConfigurationProperties(prefix = "system.cache")
 @Import(DefaultListableBeanFactory.class)
+@Setter
 public class CacheConfig {
 
     @Autowired
@@ -40,11 +44,9 @@ public class CacheConfig {
     ApplicationContext applicationContext;
 
     //系统缓存过期时间允许最小值（秒）
-    @Value("${system.cache.min.expire}")
     private long minExpire;
 
     //系统缓存过期时间允许最大值（秒）
-    @Value("${system.cache.max.expire}")
     private long maxExpire;
 
     @Bean

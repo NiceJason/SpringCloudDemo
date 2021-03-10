@@ -1,0 +1,7 @@
+# 单独使用rabbitmqdemo的是时候，需要将下面内容都屏蔽掉
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.springclouddemo.redis.config.CacheConfig,\
+  com.springclouddemo.redis.config.RedisConfig,\
+  com.springclouddemo.redis.cache.CacheThreadPool,\
+  com.springclouddemo.redis.cache.SystemCacheMgr,\
+  com.springclouddemo.redis.aop.CacheAspect

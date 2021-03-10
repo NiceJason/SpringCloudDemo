@@ -62,7 +62,7 @@ public class RedisTestController {
     }
 
     /**
-     * 测试浏览器禁用Cookie对Session的影响
+     * 测试Spring时间机制
      * @return
      */
     @GetMapping("/sendTestEvent")
