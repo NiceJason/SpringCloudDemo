@@ -1,12 +1,13 @@
-package com.nicebin.nacosdemo.entity;
+package com.nicebin.user.entity;
 
 import com.alibaba.cloud.nacos.NacosConfigManager;
-import com.alibaba.cloud.nacos.endpoint.NacosConfigEndpoint;
+import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
+import com.alibaba.cloud.nacos.NacosServiceManager;
 import com.alibaba.nacos.api.annotation.NacosInjected;
+import com.alibaba.nacos.api.annotation.NacosProperties;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.listener.Listener;
 import com.alibaba.nacos.api.exception.NacosException;
-import com.alibaba.nacos.client.config.impl.CacheData;
 import com.alibaba.nacos.client.naming.NacosNamingMaintainService;
 import com.alibaba.nacos.client.naming.NacosNamingService;
 import lombok.Data;
@@ -42,6 +43,13 @@ public class AnnotationTestSpringCloud {
     //由于大多数注解都无效，所以要使用NacosConfigManager进行操作
     @Autowired
     NacosConfigManager nacosConfigManager;
+    //这个有值
+    @Autowired
+    private NacosDiscoveryProperties nacosDiscoveryProperties;
+    //这个有值
+    @Autowired
+    NacosServiceManager nacosServiceManager;
+
     //这里的注入是为null的
     @NacosInjected
     NacosNamingService nacosNamingService;
@@ -76,8 +84,6 @@ public class AnnotationTestSpringCloud {
                 System.out.println("监听者获取到信息"+configInfo);
             }
         });
-
-
     }
 
     public String toString(){

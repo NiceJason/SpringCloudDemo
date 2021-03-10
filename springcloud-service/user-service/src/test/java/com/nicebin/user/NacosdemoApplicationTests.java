@@ -1,13 +1,13 @@
-package com.nicebin.nacosdemo;
+package com.nicebin.user;
 
-import com.nicebin.nacosdemo.service.UserTestService;
+import com.alibaba.nacos.api.naming.pojo.Instance;
+import com.nicebin.user.service.UserTestService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.*;
 import org.springframework.test.context.ContextConfiguration;
@@ -76,7 +76,7 @@ public class NacosdemoApplicationTests {
             System.out.println(userTestService.getSomething());
         }
 
-        RedisCacheManager aa;
+        Instance instance;
     }
 
     @Test

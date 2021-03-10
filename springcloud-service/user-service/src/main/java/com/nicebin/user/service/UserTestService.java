@@ -1,9 +1,7 @@
-package com.nicebin.nacosdemo.service;
+package com.nicebin.user.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @Author DiaoJianBin
@@ -12,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @Service
 public class UserTestService {
+
     boolean first = true;
 
     @Cacheable(value = "testTime",key = "'something'")

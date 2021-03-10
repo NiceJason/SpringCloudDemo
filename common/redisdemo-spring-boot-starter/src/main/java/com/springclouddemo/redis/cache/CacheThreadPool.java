@@ -35,7 +35,7 @@ public class CacheThreadPool {
     }
 
     @PostConstruct
-    public CacheThreadPool init(){
+    public void init(){
         threadPoolExecutor = new ThreadPoolExecutor(
                 corePoolSize,
                 maximumPoolSize,
@@ -45,7 +45,7 @@ public class CacheThreadPool {
         );
         //允许核心线程也受KeepAliveTime的影响
         threadPoolExecutor.allowCoreThreadTimeOut(true);
-        return new CacheThreadPool(threadPoolExecutor);
+        this.setThreadPoolExecutor(threadPoolExecutor);
     }
 
     public ThreadPoolExecutor getThreadPoolExecutor() {

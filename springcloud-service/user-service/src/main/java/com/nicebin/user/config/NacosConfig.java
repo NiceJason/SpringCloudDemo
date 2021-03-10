@@ -1,4 +1,4 @@
-package com.nicebin.nacosdemo.config;
+package com.nicebin.user.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

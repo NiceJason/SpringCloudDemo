@@ -1,4 +1,4 @@
-package com.nicebin.nacosdemo;
+package com.nicebin.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

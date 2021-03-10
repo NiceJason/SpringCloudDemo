@@ -1,4 +1,4 @@
-package com.nicebin.nacosdemo;
+package com.nicebin.user;
 
 import java.util.Date;
 

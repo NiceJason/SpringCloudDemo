@@ -1,7 +1,8 @@
-package com.nicebin.nacosdemo.controller;
+package com.nicebin.user.controller;
 
-import com.nicebin.nacosdemo.entity.AnnotationTestSpringCloud;
+import com.nicebin.user.entity.AnnotationTestSpringCloud;
 import com.springclouddemo.redis.cache.CacheThreadPool;
+import lombok.SneakyThrows;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,6 +63,12 @@ public class NacosTestController {
        return  restTemplate.getForObject("http://blank-service/getMessage/userMessage",String.class);
     }
 
+    @GetMapping("/sendMessageToBusiness")
+    public String sendMessageToBusiness(){
+        return  restTemplate.getForObject("http://business-service/getMessage/businessMessage",String.class);
+    }
+
+    @SneakyThrows
     @GetMapping("/testRedis")
     public String testRedis(HttpServletRequest request){
         //测试redis
@@ -75,11 +81,13 @@ public class NacosTestController {
         //测试Redission
         RLock lock = redissonClient.getLock("user-service-lock");
         lock.lock();
+        Thread.sleep(2 * 1000);
+        lock.unlock();
 
         //测试CacheThreadPool是否初始化成功
         ApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
         CacheThreadPool cacheThreadPool = applicationContext.getBean(CacheThreadPool.class);
-        System.out.println("缓存线程池大小为 = "+cacheThreadPool.getThreadPoolExecutor().getPoolSize());
+        System.out.println("缓存线程池大小为 = "+cacheThreadPool.getThreadPoolExecutor().getMaximumPoolSize());
         return "ok";
     }
 }
