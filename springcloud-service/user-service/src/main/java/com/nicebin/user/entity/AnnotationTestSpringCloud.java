@@ -87,9 +87,9 @@ public class AnnotationTestSpringCloud {
     }
 
     public String toString(){
-        for (String info :testList){
-            System.out.println(info);
-        }
+//        for (String info :testList){
+//            System.out.println(info);
+//        }
         return "mydata="+mydata+" isTest="+isTest+" code="+code;
     }
 

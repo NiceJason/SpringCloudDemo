@@ -36,6 +36,7 @@
         <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
         <spring-session-data-redis.version>2.1.2.RELEASE</spring-session-data-redis.version>
         <nacos-spring-context.version>1.0.0</nacos-spring-context.version>
+        <okhttp.version>4.9.0</okhttp.version>
     </properties>
 
     <dependencies>
@@ -157,6 +158,12 @@
                 <groupId>com.alibaba.nacos</groupId>
                 <artifactId>nacos-spring-context</artifactId>
                 <version>${nacos-spring-context.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

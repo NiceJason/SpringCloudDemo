@@ -13,9 +13,4 @@ import org.springframework.web.client.RestTemplate;
 @Configuration(proxyBeanMethods = false)
 public class NacosConfig {
 
-    @LoadBalanced
-    @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
 }
