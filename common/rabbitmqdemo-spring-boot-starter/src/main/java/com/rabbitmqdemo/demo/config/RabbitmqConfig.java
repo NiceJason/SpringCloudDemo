@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @Description 对RabbitMQ进行一些配置
  * @Date 2021/2/23 15:50
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class RabbitmqConfig {
 
     /**

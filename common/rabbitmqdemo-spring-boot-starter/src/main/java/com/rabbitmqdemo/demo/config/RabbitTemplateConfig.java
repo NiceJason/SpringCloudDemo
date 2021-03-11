@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  * @CreateTime : 2019/9/3
  * @Description :
  **/
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class RabbitTemplateConfig {
 
     @Bean

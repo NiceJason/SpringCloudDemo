@@ -15,7 +15,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @description: 配置Redis
  * @date 2019/11/13 17:02
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class RedisConfig {
 
     @Bean

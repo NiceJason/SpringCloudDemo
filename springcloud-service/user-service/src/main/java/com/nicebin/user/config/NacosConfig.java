@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
  * @Description
  * @Date 2021/3/5 15:25
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class NacosConfig {
 
     @LoadBalanced

@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @CreateTime : 2019/9/4
  * @Description :
  **/
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class MessageListenerContainerConfig {
 
     @Autowired

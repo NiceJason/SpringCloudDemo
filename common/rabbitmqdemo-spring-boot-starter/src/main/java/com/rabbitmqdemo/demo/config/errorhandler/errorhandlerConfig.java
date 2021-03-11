@@ -16,7 +16,7 @@ import org.springframework.util.ErrorHandler;
  * @Description 自定义错误处理的注册类
  * @Date 2021/2/25 15:05
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class errorhandlerConfig {
 
     /**
@@ -40,15 +40,5 @@ public class errorhandlerConfig {
                 return exception;
             }
         };
-    }
-
-    /**
-     * 重新设置致命错误的判断
-     * 暂时还没用到
-     * @return
-     */
-    @Bean
-    public CustomFatalExceptionStrategy customFatalExceptionStrategy(){
-        return new CustomFatalExceptionStrategy();
     }
 }
