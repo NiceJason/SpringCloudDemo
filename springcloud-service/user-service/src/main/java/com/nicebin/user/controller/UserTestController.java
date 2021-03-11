@@ -5,6 +5,7 @@ import com.nicebin.user.entity.AnnotationTestSpringCloud;
 import com.nicebin.user.feign_client.BusinessServiceTestClient;
 import com.springclouddemo.redis.cache.CacheThreadPool;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 @RefreshScope
 @RequestMapping("/test")
+@Slf4j
 public class UserTestController {
 
     @Autowired
@@ -72,6 +74,7 @@ public class UserTestController {
 
     @GetMapping("/sendMessageToBusiness")
     public String sendMessageToBusiness(){
+        log.info("日志记录");
         return  restTemplate.getForObject("http://business-service/test/getMessage/businessMessage",String.class);
     }
 
