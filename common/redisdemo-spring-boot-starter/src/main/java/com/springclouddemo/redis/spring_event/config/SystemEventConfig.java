@@ -14,7 +14,7 @@ import java.util.concurrent.Executor;
  * @Description 对事件异步监听的配置
  * @Date 2021/3/3 15:23
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class SystemEventConfig implements AsyncConfigurer {
 
     @Bean

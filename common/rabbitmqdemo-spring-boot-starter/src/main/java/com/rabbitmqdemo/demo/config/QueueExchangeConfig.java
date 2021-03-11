@@ -16,7 +16,7 @@ import java.util.Map;
  *              头部交换机因为性能较差，不就测试了
  * @Date 2021/2/23 14:25
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @ConfigurationProperties(prefix = "sunspring.dlx")
 @Setter
 public class QueueExchangeConfig {

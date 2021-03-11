@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration =\
+  com.nicebin.common.config.feign.FeignConfig,\
+  com.nicebin.common.config.rest_template.RestTemplateConfig

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @Description
  * @Date 2021/2/26 9:32
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class TestConfig {
 
     @Bean

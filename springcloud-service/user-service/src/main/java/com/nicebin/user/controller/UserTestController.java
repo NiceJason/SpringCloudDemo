@@ -1,8 +1,11 @@
 package com.nicebin.user.controller;
 
+import com.nicebin.common.entity.ResultJson;
 import com.nicebin.user.entity.AnnotationTestSpringCloud;
+import com.nicebin.user.feign_client.BusinessServiceTestClient;
 import com.springclouddemo.redis.cache.CacheThreadPool;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +14,11 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,7 +30,9 @@ import javax.servlet.http.HttpSession;
  */
 @RestController
 @RefreshScope
-public class NacosTestController {
+@RequestMapping("/test")
+@Slf4j
+public class UserTestController {
 
     @Autowired
     RestTemplate restTemplate;
@@ -48,6 +54,9 @@ public class NacosTestController {
     @Autowired
     private RedisTemplate<String,Object> redisTemplate;
 
+    @Autowired
+    BusinessServiceTestClient businessServiceTestClient;
+
     @GetMapping("/config/info")
     public String getConfigInfo() {
         return minExpire+" "+maxExpire;
@@ -65,7 +74,8 @@ public class NacosTestController {
 
     @GetMapping("/sendMessageToBusiness")
     public String sendMessageToBusiness(){
-        return  restTemplate.getForObject("http://business-service/getMessage/businessMessage",String.class);
+        log.info("日志记录");
+        return  restTemplate.getForObject("http://business-service/test/getMessage/businessMessage",String.class);
     }
 
     @SneakyThrows
@@ -89,5 +99,24 @@ public class NacosTestController {
         CacheThreadPool cacheThreadPool = applicationContext.getBean(CacheThreadPool.class);
         System.out.println("缓存线程池大小为 = "+cacheThreadPool.getThreadPoolExecutor().getMaximumPoolSize());
         return "ok";
+    }
+
+    /**
+     * 测试Feign上传文件
+     * 利用postman访问此方法
+     * @param files
+     * @param msg
+     * @return
+     */
+    @RequestMapping(value = "/testFile",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResultJson testFile(@RequestPart(value = "files") MultipartFile[] files, @RequestParam(value = "msg") String msg){
+        System.out.println("UserTestController 接收到文件：");
+        for (MultipartFile file :
+                files) {
+            System.out.println(file.getOriginalFilename());
+        }
+        ResultJson resultJson = businessServiceTestClient.testFile(files,msg);
+        //把msg传回去
+        return new ResultJson("收到msg = "+msg);
     }
 }

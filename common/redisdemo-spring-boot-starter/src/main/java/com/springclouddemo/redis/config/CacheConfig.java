@@ -32,7 +32,7 @@ import java.util.Map;
  *               不然CacheManager或者Cache想用的时候会报错
  * @date 2019/11/13 17:02
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @ConfigurationProperties(prefix = "system.cache")
 @Import(DefaultListableBeanFactory.class)
 @Setter
