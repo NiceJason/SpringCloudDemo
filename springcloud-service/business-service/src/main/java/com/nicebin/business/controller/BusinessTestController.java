@@ -1,6 +1,7 @@
 package com.nicebin.business.controller;
 
 import com.nicebin.common.entity.ResultJson;
+import com.nicebin.common.exception.SystemException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,7 +31,13 @@ public class BusinessTestController {
      */
     @RequestMapping(value = "/testFile",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResultJson testFile(@RequestPart(value = "files") MultipartFile[] files,@RequestParam(value = "msg") String msg){
-        System.out.println("BusinessTestController 接收到文件：");
+        System.out.println("进入了testFile方法 msg="+msg);
+        try {
+            Thread.sleep(10 * 1000);
+        }catch (Exception e){
+
+        }
+        System.out.println("testFile 接收到文件：");
         for (MultipartFile file :
                 files) {
             System.out.println(file.getOriginalFilename());
