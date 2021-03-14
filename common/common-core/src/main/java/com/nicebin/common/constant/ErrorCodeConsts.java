@@ -9,6 +9,9 @@ public class ErrorCodeConsts {
     //成功调用
     public static final String SUCCESS = "00000";
 
+    //系统执行时出错
+    public static final String ERROR = "B0001";
+
     //系统服务降级
     public static final String DEGRADATION = "B0220";
 }

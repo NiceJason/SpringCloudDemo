@@ -1,9 +1,9 @@
 package com.nicebin.blank.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.nicebin.common.entity.ResultJson;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author DiaoJianBin
@@ -14,16 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class BlankTestController {
 
-    @GetMapping(value = "/getMessage/{message}")
-    public String comfireMessage(@PathVariable(value = "message")String message){
+    @PostMapping(value = "/getMessage")
+    public String comfireMessage(HttpServletRequest request, @RequestBody String message){
+        String token = request.getHeader("token");
+        System.out.println("Blank收到token "+token);
         String newMessage  = "Blank收到消息 "+message;
         System.out.println(newMessage);
-        try{
-            Thread.sleep(11 * 1000);
-        }catch (Exception e){
 
-        }
-        System.out.println("休息完毕");
+//        try{
+//            Thread.sleep(11 * 1000);
+//        }catch (Exception e){
+//
+//        }
+//        System.out.println("休息完毕");
         return newMessage;
     }
 }

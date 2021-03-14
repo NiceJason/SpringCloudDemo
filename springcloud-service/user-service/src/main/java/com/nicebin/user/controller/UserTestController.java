@@ -2,8 +2,8 @@ package com.nicebin.user.controller;
 
 import com.nicebin.common.entity.ResultJson;
 import com.nicebin.user.entity.AnnotationTestSpringCloud;
-import com.nicebin.user.feign_client.BlankServiceTestClient;
-import com.nicebin.user.feign_client.BusinessServiceTestClient;
+import com.nicebin.user.feign.feign_client.BlankServiceTestClient;
+import com.nicebin.user.feign.feign_client.BusinessServiceTestClient;
 import com.springclouddemo.redis.cache.CacheThreadPool;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,6 @@ import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -127,6 +126,36 @@ public class UserTestController {
 
     @GetMapping("/sendMessageToBlankFeign")
     public String sendMessageToBlankFeign(){
-        return  blankServiceTestClient.comfireMessage("Feign方式传来的消息");
+        String longMsg = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+
+                "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+
+                "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"+
+                "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+
+                "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+
+                "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"+
+                "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+
+                "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+
+                "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"+
+                "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+
+                "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+
+                "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"+
+                "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+
+                "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+
+                "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"+
+                "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"+
+                "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+
+                "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"+
+                "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+        return  blankServiceTestClient.comfireMessage(longMsg);
     }
 }
