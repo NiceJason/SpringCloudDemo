@@ -9,16 +9,16 @@
                              onMismatch="DENY" />
             <!-- 这个都知道是输出日志的格式 -->
             <PatternLayout
-                    pattern="%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx" />
+                    pattern="%clr{%d{yyyy-MM-dd HH:mm:ss}}{faint} %clr{%5p} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx" />
         </Console>
 
         <!-- 添加过滤器ThresholdFilter,可以有选择的输出某个级别以上的类别 onMatch="ACCEPT" onMismatch="DENY"意思是匹配就接受,否则直接拒绝 -->
-        <RollingFile name="ERROR" fileName="/logs/${spring.application.name}/error/error.log"
-                     filePattern="/logs/${spring.application.name}/error/error-%d{yyyy-MM-dd}.log">
+        <RollingFile name="ErrorRollingFile" fileName="logs/user-service/error/error.log"
+                     filePattern="logs/user-service/error/error-%d{yyyy-MM-dd}.log">
             <ThresholdFilter level="error" onMatch="ACCEPT"
                              onMismatch="DENY" />
             <PatternLayout
-                    pattern="{&quot;@timestamp&quot;:&quot;%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}&quot;,&quot;level&quot;:&quot;%p&quot;,&quot;class&quot;:&quot;%l&quot;,&quot;Content&quot;:&quot;%m%ex&quot;}%n " />
+                    pattern="%d{yyyy-MM-dd HH:mm:ss} %5p ${sys:PID} --- [%15.15t] %-40.40c{1.} : %m%n%xwEx" />
             <Policies>
                 <TimeBasedTriggeringPolicy modulate="true"
                                            interval="1" />
@@ -26,14 +26,14 @@
         </RollingFile>
 
         <!-- 这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
-        <RollingFile name="RollingFile" fileName="/logs/${spring.application.name}/info/info.log"
-                     filePattern="/logs/${spring.application.name}/info/info-%d{yyyy-MM-dd}.log">
+        <RollingFile name="RollingFile" fileName="logs/user-service/info/info.log"
+                     filePattern="logs/user-service/info/info-%d{yyyy-MM-dd}.log">
 
             <ThresholdFilter level="info" onMatch="ACCEPT"
                              onMismatch="DENY" />
 
             <PatternLayout
-                    pattern="{&quot;@timestamp&quot;:&quot;%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}&quot;,&quot;level&quot;:&quot;%p&quot;,&quot;class&quot;:&quot;%l&quot;,&quot;Content&quot;:&quot;%m%ex&quot;}%n " />
+                    pattern="%d{yyyy-MM-dd HH:mm:ss} %5p ${sys:PID} --- [%15.15t] %-40.40c{1.} : %m%n%xwEx" />
 
             <Policies>
                 <TimeBasedTriggeringPolicy modulate="true"
@@ -44,12 +44,17 @@
 
     <!-- 然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
     <loggers>
+        <AsyncLogger name="AsyncErrorRollingFile" level="trace" additivity="false">
+            <appender-ref ref="ErrorRollingFile"/>
+        </AsyncLogger>
+        <AsyncLogger name="AsyncRollingFile" level="trace" additivity="false">
+            <appender-ref ref="RollingFile"/>
+        </AsyncLogger>
         <!-- 建立一个默认的root的logger -->
-        <root level="info">
-            <appender-ref ref="RollingFile" />
-            <!---->
+        <root level="info" additivity="false">
             <appender-ref ref="Console" />
-            <appender-ref ref="ERROR" />
+            <appender-ref ref="ErrorRollingFile"/>
+            <appender-ref ref="RollingFile"/>
         </root>
     </loggers>
 </configuration>

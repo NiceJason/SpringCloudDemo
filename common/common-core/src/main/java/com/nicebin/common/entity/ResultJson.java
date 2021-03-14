@@ -26,4 +26,9 @@ public class ResultJson implements Serializable {
         this.code = ErrorCodeConsts.SUCCESS;
         this.data = data;
     }
+
+    public ResultJson(String code,Object data){
+        this.code = code;
+        this.data = data;
+    }
 }

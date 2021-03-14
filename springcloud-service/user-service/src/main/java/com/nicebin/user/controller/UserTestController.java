@@ -2,6 +2,7 @@ package com.nicebin.user.controller;
 
 import com.nicebin.common.entity.ResultJson;
 import com.nicebin.user.entity.AnnotationTestSpringCloud;
+import com.nicebin.user.feign_client.BlankServiceTestClient;
 import com.nicebin.user.feign_client.BusinessServiceTestClient;
 import com.springclouddemo.redis.cache.CacheThreadPool;
 import lombok.SneakyThrows;
@@ -10,6 +11,7 @@ import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -57,6 +59,9 @@ public class UserTestController {
     @Autowired
     BusinessServiceTestClient businessServiceTestClient;
 
+    @Autowired
+    BlankServiceTestClient blankServiceTestClient;
+
     @GetMapping("/config/info")
     public String getConfigInfo() {
         return minExpire+" "+maxExpire;
@@ -69,7 +74,7 @@ public class UserTestController {
 
     @GetMapping("/sendMessageToBlank")
     public String sendMessageToBlank(){
-       return  restTemplate.getForObject("http://blank-service/getMessage/userMessage",String.class);
+       return  restTemplate.getForObject("http://blank-service/test/getMessage/userMessage",String.class);
     }
 
     @GetMapping("/sendMessageToBusiness")
@@ -117,6 +122,11 @@ public class UserTestController {
         }
         ResultJson resultJson = businessServiceTestClient.testFile(files,msg);
         //把msg传回去
-        return new ResultJson("收到msg = "+msg);
+        return new ResultJson("收到msg = "+resultJson.getMsg());
+    }
+
+    @GetMapping("/sendMessageToBlankFeign")
+    public String sendMessageToBlankFeign(){
+        return  blankServiceTestClient.comfireMessage("Feign方式传来的消息");
     }
 }

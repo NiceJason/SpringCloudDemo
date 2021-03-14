@@ -37,6 +37,7 @@
         <spring-session-data-redis.version>2.1.2.RELEASE</spring-session-data-redis.version>
         <nacos-spring-context.version>1.0.0</nacos-spring-context.version>
         <okhttp.version>4.9.0</okhttp.version>
+        <disruptor.version>3.4.2</disruptor.version>
     </properties>
 
     <dependencies>
@@ -84,6 +85,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>${disruptor.version}</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
