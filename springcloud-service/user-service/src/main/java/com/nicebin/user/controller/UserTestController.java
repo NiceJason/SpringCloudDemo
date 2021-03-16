@@ -71,6 +71,10 @@ public class UserTestController {
         return annotationTestSpringCloud.toString();
     }
 
+    /**
+     * 这里会返回404的错误
+     * @return
+     */
     @GetMapping("/sendMessageToBlank")
     public String sendMessageToBlank(){
        return  restTemplate.getForObject("http://blank-service/test/getMessage/userMessage",String.class);
