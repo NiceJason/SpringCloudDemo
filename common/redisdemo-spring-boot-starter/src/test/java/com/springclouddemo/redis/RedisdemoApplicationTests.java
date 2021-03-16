@@ -3,8 +3,6 @@ package com.springclouddemo.redis;
 import com.springclouddemo.redis.service.CacheService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.redisson.api.RLock;
-import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.cache.RedisCacheManager;
@@ -25,8 +23,8 @@ public class RedisdemoApplicationTests {
     RedisTemplate<String,Object> redisTemplate;
     @Autowired
     CacheService cacheService;
-    @Autowired
-    RedissonClient redissonClient;
+//    @Autowired
+//    RedissonClient redissonClient;
 
     @Test
     public void redisTest() throws Exception{
@@ -79,13 +77,13 @@ public class RedisdemoApplicationTests {
         RedisCacheManager aa;
     }
 
-    @Test
-    public void redissonTest() throws Exception{
-        RLock rLock = redissonClient.getLock("mylock");
-        rLock.lock();
-        System.out.println("加锁了，开始处理业务");
-        Thread.sleep(30*10000);
-        System.out.println("业务处理完毕");
-        rLock.unlock();
-    }
+//    @Test
+//    public void redissonTest() throws Exception{
+//        RLock rLock = redissonClient.getLock("mylock");
+//        rLock.lock();
+//        System.out.println("加锁了，开始处理业务");
+//        Thread.sleep(30*10000);
+//        System.out.println("业务处理完毕");
+//        rLock.unlock();
+//    }
 }

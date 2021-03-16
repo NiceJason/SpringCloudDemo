@@ -81,10 +81,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!--日志相关-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
+        <!--异步日志需要这个队列框架-->
         <dependency>
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
@@ -193,6 +196,7 @@
     <modules>
         <module>common</module>
         <module>springcloud-service</module>
+        <module>algorithm</module>
     </modules>
     
 </project>
