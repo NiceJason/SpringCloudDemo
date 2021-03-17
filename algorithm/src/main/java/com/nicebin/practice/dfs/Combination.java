@@ -1,4 +1,4 @@
-package com.nicebin.practice.dps;
+package com.nicebin.practice.dfs;
 
 import org.junit.Test;
 

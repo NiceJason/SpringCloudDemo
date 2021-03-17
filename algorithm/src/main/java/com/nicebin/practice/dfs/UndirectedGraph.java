@@ -1,10 +1,8 @@
-package com.nicebin.practice.dps;
+package com.nicebin.practice.dfs;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @auther: NiceBin
@@ -27,6 +25,9 @@ public class UndirectedGraph {
     private List<String> shortPath = new ArrayList<>();
     //最短路径长度
     private int shortPathLengh = 9999;
+
+    //总共路径
+    private List<String> allPath = new ArrayList<>();
 
     private Stack<String> recordPath = new Stack<>();
 
@@ -68,10 +69,17 @@ public class UndirectedGraph {
         exitX = 8;
         exitY = 8;
         findExit(maze,0,0);
-        for (String result :
-                shortPath) {
-            System.out.println(result);
-        }
+
+        printPath("maze总共路径",allPath);
+        printPath("maze最短路径为",shortPath);
+        recordPath.clear();
+        shortPath.clear();
+        allPath.clear();
+
+
+        findExit(maze2,0,0);
+        printPath("maze2总共路径",allPath);
+        printPath("maze2最短路径为",shortPath);
 
     }
 
@@ -80,12 +88,19 @@ public class UndirectedGraph {
      * 每次调用该函数，就相当于从当前坐标尝试往四周走
      */
     private void findExit(int[][] map,int x,int y){
+        //出边界了或者有障碍物（一定要先判定x,y是否越界了），或者这个路走过了
+        if(x<0 || y<0 || x>mapX || y>mapY ||map[x][y] !=0){
+            return;
+        }
+
+        //记录走过的路
+        map[x][y] = 2;
+        recordPath.add("("+x+","+y+")");
+
         //到终点了
         if(x == exitX && y==exitY){
-            //这一步走成功了
-            recordPath.add("("+x+","+y+")");
-
             String path = recordPath.toString();
+            allPath.add(path);
             if(path.length()<shortPathLengh){
                 shortPathLengh = path.length();
                 shortPath.clear();
@@ -95,43 +110,32 @@ public class UndirectedGraph {
             }
         }
 
-        //出边界了或者有障碍物（一定要先判定x,y是否越界了）
-        if(x<0 || y<0 || x>mapX || y>mapY ||map[x][y] !=0){
-            return;
-        }else{
-            System.out.println(x+" "+y);
-            //这一步走成功了
-            recordPath.add("("+x+","+y+")");
-        }
-
-        //记录走过的路
-        map[x][y] = 2;
-
         //分别尝试往四周走
         //往左走
         findExit(map,x,y-1);
-        //清除走过的路
-//        clearSign(map,x,y-1);
 
         //往右走
         findExit(map,x,y+1);
-        //清除走过的路
-//        clearSign(map,x,y+1);
 
         //往上走
         findExit(map,x-1,y);
-        //清除走过的路
-//        clearSign(map,x-1,y);
 
         //往下走
         findExit(map,x+1,y);
-        //清除走过的路
-//        clearSign(map,x+1,y);
+
+        recordPath.pop();
+        map[x][y] =0;
     }
 
-    private void clearSign(int[][] map,int x,int y){
-        if(!(x<0 || y<0 || x>mapX || y>mapY)&&map[x][y] == 2){
-            map[x][y] = 0;
+    /**
+     * 打印出路径
+     * @param msg
+     */
+    private void printPath(String msg,List<String> path){
+        System.out.println(msg);
+        for (String s :
+                path) {
+            System.out.println(s);
         }
     }
 }
