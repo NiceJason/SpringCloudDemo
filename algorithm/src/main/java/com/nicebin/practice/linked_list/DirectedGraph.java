@@ -34,7 +34,7 @@ public class DirectedGraph {
      */
     @Test
     public void dependencySearch(){
-        String dependency= "[A-B],[B-C],[B-D],[C-D],[D-E],[E-G],[G-A],[G-C],[Y-Z]";
+        String dependency= "[Q-W],[W-Q],[A-B],[B-C],[B-D],[C-D],[D-E],[E-G],[G-A],[G-C],[Y-Z]";
 //        String dependency= "[A-B],[B-C],[C-D],[D-E],[E-G],[G-A]";
         HashMap<Character,Node> graph = mappingToGraph(dependency);
         List<String> allPath = dependencySearchAlgorithm(graph);
@@ -98,14 +98,18 @@ public class DirectedGraph {
 
         //记录回环集合
         List<String> allPath = new ArrayList<>();
-        //记录路径
-        String path = "";
 
         Set<Character> keys = graph.keySet();
 
         //外层循环每个节点都来一次
         for (Character key :
                 keys) {
+            //记录的数据全部重置
+            sign.clear();
+            record.clear();
+            //记录路径
+            String path ="";
+
             Node root = graph.get(key);
             record.add(root);
 
@@ -113,15 +117,21 @@ public class DirectedGraph {
             while (!record.isEmpty()){
                 Node node = record.poll();
                 Character name = node.getName();
-                //记录本个root所走的路径
-                path = path + name;
-                //如果标记中已经存在，那么现在是第二次遍历到，表示有环
+
+                //如果标记中已经存在，那么现在是第二次访问该节点
                 if(sign.contains(name)){
-                    allPath.add(path);
-                    break;
+                    //如果该节点切好是root节点，那么表示回环了
+                    if(root == node){
+                        //记录最后再次访问自己
+                        path = path +" "+name;
+                        allPath.add(path);
+                        break;
+                    }
                 }else{
                     //打上标记
                     sign.add(name);
+                    //记录本个root所走的路径（只记一次）
+                    path = path +" "+name;
                 }
 
                 List<Character> list = node.getList();

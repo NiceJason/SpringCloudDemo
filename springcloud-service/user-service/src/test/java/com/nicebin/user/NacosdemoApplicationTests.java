@@ -1,5 +1,7 @@
 package com.nicebin.user;
 
+import com.alibaba.csp.sentinel.Entry;
+import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.alibaba.nacos.api.naming.pojo.Instance;
 import com.nicebin.user.service.UserTestService;
 import org.junit.Test;
