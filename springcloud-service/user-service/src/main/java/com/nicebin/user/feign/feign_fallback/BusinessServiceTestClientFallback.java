@@ -24,4 +24,10 @@ public class BusinessServiceTestClientFallback implements BusinessServiceTestCli
         System.out.println("testFile 方法服务降级");
         return new ResultJson(ErrorCodeConsts.DEGRADATION,"testFile 方法服务降级");
     }
+
+    @Override
+    public String throwExceptionTest(String msg) {
+        System.out.println("throwExceptionTest 方法服务降级");
+        return "throwExceptionTest 方法服务降级";
+    }
 }

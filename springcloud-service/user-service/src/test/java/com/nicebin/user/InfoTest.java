@@ -19,11 +19,12 @@ public class InfoTest {
 
     @Test
     public void test(){
-        int[][] a = {
-                {1,2,3},
-                {4,5}
-        };
-
-        System.out.println(a[0].length+" "+a[1].length);
+        try{
+            throw new RuntimeException("异常了");
+        }catch (RuntimeException e){
+            System.out.println("RuntimeException被捕捉 "+e.getMessage());
+        }catch (Throwable throwable){
+            System.out.println("Throwable被捕捉 "+throwable.getMessage());
+        }
     }
 }

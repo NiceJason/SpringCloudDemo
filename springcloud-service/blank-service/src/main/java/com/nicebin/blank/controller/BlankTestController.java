@@ -29,4 +29,10 @@ public class BlankTestController {
 //        System.out.println("休息完毕");
         return newMessage;
     }
+
+    @RequestMapping("/throwExceptionTest")
+    public String throwExceptionTest(@RequestBody String msg){
+        System.out.println(msg);
+        throw new RuntimeException("抛出异常测试");
+    }
 }

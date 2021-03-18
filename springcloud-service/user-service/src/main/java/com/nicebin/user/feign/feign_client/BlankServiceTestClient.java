@@ -1,10 +1,7 @@
 package com.nicebin.user.feign.feign_client;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,4 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public interface BlankServiceTestClient {
     @PostMapping(value = "/getMessage")
     String comfireMessage(@RequestBody String message);
+
+    @RequestMapping("/throwExceptionTest")
+    String throwExceptionTest(@RequestBody String msg);
 }

@@ -45,4 +45,10 @@ public class BusinessTestController {
         //把msg传回去
         return new ResultJson(msg);
     }
+
+    @RequestMapping("/throwExceptionTest")
+    public String throwExceptionTest(@RequestBody String msg){
+        System.out.println(msg);
+        throw new RuntimeException("抛出异常测试");
+    }
 }

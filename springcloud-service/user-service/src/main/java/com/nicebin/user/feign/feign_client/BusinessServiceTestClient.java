@@ -28,4 +28,7 @@ public interface BusinessServiceTestClient {
 
     @RequestMapping(value = "/testFile",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE,method = RequestMethod.POST)
     ResultJson testFile(@RequestPart(value = "files") MultipartFile[] files,@RequestParam(value = "msg") String msg);
+
+    @RequestMapping("/throwExceptionTest")
+    public String throwExceptionTest(@RequestBody String msg);
 }
