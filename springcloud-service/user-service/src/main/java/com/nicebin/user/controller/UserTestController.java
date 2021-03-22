@@ -77,7 +77,7 @@ public class UserTestController {
      */
     @GetMapping("/sendMessageToBlank")
     public String sendMessageToBlank(){
-       return  restTemplate.getForObject("http://blank-service/test/getMessage/userMessage",String.class);
+       return  restTemplate.postForObject("http://blank-service/test/getMessage","userMessage",String.class);
     }
 
     @GetMapping("/sendMessageToBusiness")

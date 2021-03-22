@@ -54,9 +54,14 @@ public class CustomRuleA extends AbstractLoadBalancerRule {
         //获取被调用的服务的所有实例
         List<Instance> invokedAllInstanceList = namingService.getAllInstances(invokedServerName,group);
 
-        //默认获取最后一个
-        Instance instance = invokedAllInstanceList.get(invokedAllInstanceList.size()-1);
-        System.out.println("CustomRuleA 选择好服务的端口="+instance.getPort());
-        return new NacosServer(instance);
+        Instance instance = null;
+        if(invokedAllInstanceList.size()>0){
+            //默认获取最后一个
+            instance = invokedAllInstanceList.get(invokedAllInstanceList.size()-1);
+            System.out.println("CustomRuleA 选择好服务的端口="+instance.getPort());
+            return new NacosServer(instance);
+        }
+
+        return null;
     }
 }

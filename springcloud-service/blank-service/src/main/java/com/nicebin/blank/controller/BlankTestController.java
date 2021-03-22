@@ -35,4 +35,20 @@ public class BlankTestController {
         System.out.println(msg);
         throw new RuntimeException("抛出异常测试");
     }
+
+    @PostMapping(value = "/getSlowMessage")
+    public String getSlowMessage(HttpServletRequest request, @RequestBody String message){
+        String token = request.getHeader("token");
+        System.out.println("Blank收到token "+token);
+        String newMessage  = "Blank收到消息 "+message;
+        System.out.println(newMessage);
+        System.out.println("getSlowMessage 开始休息");
+        try{
+            Thread.sleep(10 * 1000);
+        }catch (Exception e){
+
+        }
+        System.out.println("休息完毕");
+        return newMessage;
+    }
 }

@@ -29,6 +29,15 @@ public interface BusinessServiceTestClient {
     @RequestMapping(value = "/testFile",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE,method = RequestMethod.POST)
     ResultJson testFile(@RequestPart(value = "files") MultipartFile[] files,@RequestParam(value = "msg") String msg);
 
-    @RequestMapping("/throwExceptionTest")
-    public String throwExceptionTest(@RequestBody String msg);
+    @RequestMapping(value = "/throwExceptionTest",method = RequestMethod.POST)
+    String throwExceptionTest(@RequestBody String msg);
+
+    /**
+     * 即使目标实际Controller的方法有HttpServletRequst
+     * 但是不需要传此参数，就不用写
+     * @param message
+     * @return
+     */
+    @PostMapping(value = "/getSlowMessage")
+    String getSlowMessage(@RequestBody String message);
 }

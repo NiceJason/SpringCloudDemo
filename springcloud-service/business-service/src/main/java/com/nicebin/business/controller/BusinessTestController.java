@@ -6,6 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @Author DiaoJianBin
  * @Description 测试控制器，主要用于测试功能
@@ -17,7 +19,7 @@ public class BusinessTestController {
 
     @GetMapping(value = "/getMessage/{message}")
     public String comfireMessage(@PathVariable(value = "message")String message){
-        String newMessage  = "Bussiness收到消息 "+message;
+        String newMessage  = "Business收到消息 "+message;
         System.out.println(newMessage);
         return newMessage;
     }
@@ -50,5 +52,21 @@ public class BusinessTestController {
     public String throwExceptionTest(@RequestBody String msg){
         System.out.println(msg);
         throw new RuntimeException("抛出异常测试");
+    }
+
+    @PostMapping(value = "/getSlowMessage")
+    public String getSlowMessage(HttpServletRequest request, @RequestBody String message) {
+        String token = request.getHeader("token");
+        System.out.println("Business收到token "+token);
+        String newMessage  = "Business收到消息 "+message;
+        System.out.println(newMessage);
+        System.out.println("getSlowMessage 开始休息");
+        try{
+            Thread.sleep(10 * 1000);
+        }catch (Exception e){
+
+        }
+        System.out.println("休息完毕");
+        return newMessage;
     }
 }

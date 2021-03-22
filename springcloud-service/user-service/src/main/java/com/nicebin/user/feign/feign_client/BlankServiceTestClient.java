@@ -3,8 +3,6 @@ package com.nicebin.user.feign.feign_client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * @Author DiaoJianBin
  * @Description
@@ -17,4 +15,7 @@ public interface BlankServiceTestClient {
 
     @RequestMapping("/throwExceptionTest")
     String throwExceptionTest(@RequestBody String msg);
+
+    @PostMapping(value = "/getSlowMessage")
+    String getSlowMessage(@RequestBody String message);
 }
