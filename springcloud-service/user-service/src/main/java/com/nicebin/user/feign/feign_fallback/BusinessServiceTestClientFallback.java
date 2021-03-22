@@ -15,19 +15,25 @@ import org.springframework.web.multipart.MultipartFile;
 public class BusinessServiceTestClientFallback implements BusinessServiceTestClient {
     @Override
     public String comfireMessage(String message) {
-        System.out.println("comfireMessage 方法服务降级");
-        return "comfireMessage 方法服务降级";
+        System.out.println("FeignClient：comfireMessage 方法服务降级");
+        return "FeignClient：comfireMessage 方法服务降级";
     }
 
     @Override
     public ResultJson testFile(MultipartFile[] files, String msg) {
-        System.out.println("testFile 方法服务降级");
-        return new ResultJson(ErrorCodeConsts.DEGRADATION,"testFile 方法服务降级");
+        System.out.println("FeignClient：testFile 方法服务降级");
+        return new ResultJson(ErrorCodeConsts.DEGRADATION,"FeignClient：testFile 方法服务降级");
     }
 
     @Override
     public String throwExceptionTest(String msg) {
-        System.out.println("throwExceptionTest 方法服务降级");
-        return "throwExceptionTest 方法服务降级";
+        System.out.println("FeignClient：throwExceptionTest 方法服务降级");
+        return "FeignClient：throwExceptionTest 方法服务降级";
+    }
+
+    @Override
+    public String getSlowMessage(String message) {
+        System.out.println("FeignClient：getSlowMessage 方法服务降级");
+        return "FeignClient：getSlowMessage 方法服务降级";
     }
 }

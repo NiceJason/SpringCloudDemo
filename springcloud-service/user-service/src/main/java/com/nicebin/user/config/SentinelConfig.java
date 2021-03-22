@@ -1,4 +1,4 @@
-package com.nicebin.user.sentinel.config;
+package com.nicebin.user.config;
 
 import com.alibaba.csp.sentinel.context.Context;
 import com.alibaba.csp.sentinel.slotchain.ProcessorSlotEntryCallback;
@@ -9,12 +9,11 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @Author DiaoJianBin
- * @Description SentinelConfig的全局配置
+ * @Description Sentinel的全局配置
  * @Date 2021/3/18 16:37
  */
 @Configuration
 public class SentinelConfig {
-
     static {
         StatisticSlotCallbackRegistry.addEntryCallback("defaultCallback", new ProcessorSlotEntryCallback() {
             @Override

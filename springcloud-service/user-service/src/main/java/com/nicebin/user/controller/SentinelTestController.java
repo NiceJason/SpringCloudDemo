@@ -1,5 +1,6 @@
 package com.nicebin.user.controller;
 
+import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.nicebin.user.entity.TestResource;
 import com.nicebin.user.service.SentinelTestService;
 import org.springframework.beans.factory.annotation.Autowired;
