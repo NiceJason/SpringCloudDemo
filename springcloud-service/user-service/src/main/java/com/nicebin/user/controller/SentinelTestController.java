@@ -29,12 +29,12 @@ public class SentinelTestController {
     @RequestMapping("/getResource2")
     public String getResource2(@RequestParam("name") String name,@RequestParam("count") int count){
         TestResource testResource = new TestResource("宝贵的资源",10);
-        return sentinelTestService.getResource1(name,count,testResource);
+        return sentinelTestService.getResource2(name,count,testResource);
     }
 
     @RequestMapping("/getResource3")
     public String getResource3(@RequestParam("name") String name,@RequestParam("count") int count){
         TestResource testResource = new TestResource("宝贵的资源",33);
-        return sentinelTestService.getResource1(name,count,testResource);
+        return sentinelTestService.getResource3(name,count,testResource);
     }
 }
