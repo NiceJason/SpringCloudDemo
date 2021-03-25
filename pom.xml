@@ -2,13 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.2.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -26,6 +19,7 @@
         <redisdemo-spring-boot-starter.version>1.0.0</redisdemo-spring-boot-starter.version>
         <rabbitmqdemo-spring-boot-starter.version>1.0.0</rabbitmqdemo-spring-boot-starter.version>
 
+        <spring-boot-starter-parent.version>2.3.2.RELEASE</spring-boot-starter-parent.version>
         <aspectj.aspectjrt.version>1.8.10</aspectj.aspectjrt.version>
         <aspectj.aspectjweaver.version>1.9.4</aspectj.aspectjweaver.version>
         <cglib.version>3.3.0</cglib.version>
@@ -38,19 +32,24 @@
         <nacos-spring-context.version>1.0.0</nacos-spring-context.version>
         <okhttp.version>4.9.0</okhttp.version>
         <disruptor.version>3.4.2</disruptor.version>
+
+        <!--以下原本是spring-boot-starter-parent里面的-->
+        <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
+        <lombok.version>1.18.12</lombok.version>
+        <spring-boot-starter-test.version>${spring-boot.version}</spring-boot-starter-test.version>
+        <jackson-databind.version>2.11.1</jackson-databind.version>
+        <spring-boot-configuration-processor.version>${spring-boot.version}</spring-boot-configuration-processor.version>
+        <spring-boot-starter.version>${spring-boot.version}</spring-boot-starter.version>
+        <spring-boot-starter-log4j2.version>${spring-boot.version}</spring-boot-starter-log4j2.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
         <!--fastJson-->
         <dependency>
@@ -62,11 +61,13 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${spring-boot-configuration-processor.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -74,6 +75,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot-starter.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -86,6 +88,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>${spring-boot-starter-log4j2.version}</version>
         </dependency>
         <!--异步日志需要这个队列框架-->
         <dependency>
@@ -94,6 +97,12 @@
             <version>${disruptor.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot-starter-test.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -126,6 +135,21 @@
                 <version>${rabbitmqdemo-spring-boot-starter.version}</version>
             </dependency>
 
+            <!--SpringBoot-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot-starter-parent.version}</version>
+            </dependency>
+
+            <!--Springboot web-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!--缓存相关-->
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
@@ -180,6 +204,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.alibaba.nacos</groupId>
                 <artifactId>nacos-spring-context</artifactId>
                 <version>${nacos-spring-context.version}</version>
@@ -190,6 +220,24 @@
                 <artifactId>okhttp</artifactId>
                 <version>${okhttp.version}</version>
             </dependency>
+
+            <!--重试机制-->
+
+
+            <!--消息队列-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -197,6 +245,7 @@
         <module>common</module>
         <module>springcloud-service</module>
         <module>algorithm</module>
+        <module>gateway</module>
     </modules>
-    
+
 </project>

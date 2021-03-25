@@ -80,9 +80,9 @@ public class UserTestController {
        return  restTemplate.postForObject("http://blank-service/test/getMessage","userMessage",String.class);
     }
 
-    @GetMapping("/sendMessageToBusiness")
-    public String sendMessageToBusiness(){
-        log.info("日志记录");
+    @GetMapping("/sendMessageToBusiness/{msg}")
+    public String sendMessageToBusiness(@PathVariable(value = "msg")String msg){
+        log.info("日志记录 msg  = {}",msg);
         return  restTemplate.getForObject("http://business-service/test/getMessage/businessMessage",String.class);
     }
 
