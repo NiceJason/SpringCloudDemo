@@ -62,7 +62,7 @@ public class RedisTestController {
     }
 
     /**
-     * 测试Spring时间机制
+     * 测试Spring事件机制
      * @return
      */
     @GetMapping("/sendTestEvent")

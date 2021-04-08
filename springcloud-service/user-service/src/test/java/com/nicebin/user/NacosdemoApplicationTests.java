@@ -18,6 +18,8 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.*;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -33,5 +35,7 @@ public class NacosdemoApplicationTests {
     public void redissonTest() throws Exception{
         System.out.println("1");
         FlowRule aa;
+
+
     }
 }

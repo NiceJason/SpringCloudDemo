@@ -162,4 +162,22 @@ public class UserTestController {
                 "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
         return  blankServiceTestClient.comfireMessage(longMsg);
     }
+
+    /**
+     * 测试路由
+     * @return
+     */
+    @RequestMapping("/testGateway")
+    public String testGateway(HttpServletRequest request){
+        String appId = request.getParameter("appId");
+        String msg = request.getParameter("msg");
+
+        String str = "appId="+appId +" mag="+msg;
+        System.out.println(str);
+
+        //这里是获取不到东西的，两个Session不互通，要自己弄分布式Session
+        HttpSession session = request.getSession();
+        System.out.println("获取到从Gateway(TestGlobalFilter)设置的值："+session.getAttribute("Gateway"));
+        return str;
+    }
 }
