@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -177,7 +178,22 @@ public class UserTestController {
 
         //这里是获取不到东西的，两个Session不互通，要自己弄分布式Session
         HttpSession session = request.getSession();
-        System.out.println("获取到从Gateway(TestGlobalFilter)设置的值："+session.getAttribute("Gateway"));
+        System.out.println("获取到从Gateway设置在Session里的值："+session.getAttribute("Gateway"));
+
+        //获取Gateway设置的头部，Gateway操作头只能读，获取不到东西的
+        String headerMsg = request.getHeader("GatewayKey-header");
+        System.out.println("获取Gateway设置的头部 ="+headerMsg);
+
+        //获取Gateway设置的cookie，Gateway操作cookie只能读，获取不到东西的
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie :
+                cookies) {
+            System.out.println("收到的cookie name= "+cookie.getName()+" value="+cookie.getValue());
+        }
+        //获取Gateway设置的param，Gateway操作param只能读，获取不到东西的
+        String param = request.getParameter("GatewayKey-param");
+        System.out.println("获取Gateway设置的param = "+param);
+
         return str;
     }
 }

@@ -30,9 +30,19 @@ public class TestGlobalFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         System.out.println("进入TestGlobalFilter 全局网关拦截器");
 //        exchange.getSession().map(WebSession::save).then(chain.filter(exchange));
-
         System.out.println("退出TestGlobalFilter 全局网关拦截器");
-        return chain.filter(exchange);
+
+        return exchange.getSession().flatMap(webSession -> {
+            System.out.println("GlobalGateway开始操作WebSession");
+            ServerHttpResponse response = exchange.getResponse();
+
+            //这Session只能在网关里用
+            //除非这里自己存到缓存里去，像做SpringSession那样，不然分布式不了
+            webSession.getAttributes().put("GlobalGateway","Hi,我是GlobalGateway");
+            JSONObject message = new JSONObject();
+
+            return chain.filter(exchange);
+        });
     }
 
     @Override

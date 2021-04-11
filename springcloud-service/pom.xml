@@ -86,11 +86,18 @@
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-nacos</artifactId>
         </dependency>
+
+        <!--数据库相关-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
     </dependencies>
 
     <modules>
         <module>blank-service</module>
         <module>business-service</module>
         <module>user-service</module>
+        <module>resources-service</module>
     </modules>
 </project>

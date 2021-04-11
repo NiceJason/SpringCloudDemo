@@ -32,6 +32,9 @@
         <nacos-spring-context.version>1.0.0</nacos-spring-context.version>
         <okhttp.version>4.9.0</okhttp.version>
         <disruptor.version>3.4.2</disruptor.version>
+        <mybatis-plus-boot-starter.version>3.4.0</mybatis-plus-boot-starter.version>
+        <mybatis-plus-generator.version>3.3.2</mybatis-plus-generator.version>
+        <velocity-engine-core.version>2.2</velocity-engine-core.version>
 
         <!--以下原本是spring-boot-starter-parent里面的-->
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
@@ -238,6 +241,26 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!--数据库相关-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+
+            <!--以下2个是mybatis模板生成器-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity-engine-core.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

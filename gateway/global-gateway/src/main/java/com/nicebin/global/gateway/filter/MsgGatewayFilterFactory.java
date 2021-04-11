@@ -6,13 +6,17 @@ import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpCookie;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
+import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 
 /**
  * @Author DiaoJianBin
@@ -36,7 +40,7 @@ public class MsgGatewayFilterFactory extends AbstractGatewayFilterFactory {
     @Override
     public GatewayFilter apply(Object config) {
         return ((exchange, chain) -> {
-
+            System.out.println("进入MsgGatewayFilterFactory");
             ServerHttpRequest serverRequest = exchange.getRequest();
             HttpCookie tokenCookie = serverRequest.getCookies().getFirst("token");
             if(tokenCookie ==null || StringUtils.isEmpty(tokenCookie.getValue())){
@@ -46,20 +50,43 @@ public class MsgGatewayFilterFactory extends AbstractGatewayFilterFactory {
             }
             System.out.println("获取到token = "+tokenCookie.getValue());
 
-            exchange.getSession().flatMap(webSession -> {
+            System.out.println("退出MsgGatewayFilterFactory");
+            return exchange.getSession().flatMap(webSession -> {
                 System.out.println("Gateway开始操作WebSession");
                 ServerHttpResponse response = exchange.getResponse();
+
+                //获得全局拦截器的记录
+                String globalMsg = webSession.getAttribute("GlobalGateway");
+                System.out.println(globalMsg);
+
                 //这Session只能在网关里用
                 //除非这里自己存到缓存里去，像做SpringSession那样，不然分布式不了
                 webSession.getAttributes().put("Gateway","Gateway记录了值");
                 JSONObject message = new JSONObject();
-                message.put("key1","key1的值");
-                message.put("key2","key2的值");
-                byte[] bits = message.toString().getBytes(StandardCharsets.UTF_8);
-                DataBuffer buffer = response.bufferFactory().wrap(bits);
-                return response.writeWith(Mono.just(buffer));
-            }).subscribe();
-            return chain.filter(exchange);
+
+
+                //操作头部，body,cookie
+                ServerHttpRequest request = exchange.getRequest();
+                HttpHeaders headers = request.getHeaders();
+                MultiValueMap<String, HttpCookie> cookies = request.getCookies();
+                MultiValueMap<String, String> queryParams = request.getQueryParams();
+                Flux<DataBuffer> body = request.getBody();
+
+                //想要操作body的值不容易的
+                //参考：https://blog.csdn.net/seantdj/article/details/100546713
+                //参考：https://www.haoyizebo.com/posts/876ed1e8/
+
+                //头部里面放值，会报错，这是个ReadOnlyHttpHeaders
+                //headers.add("GatewayKey-header","GatewayValue-header");
+
+                //cookie里面放值，会报错，只能读
+                //cookies.add("GatewayKey-cookie",new HttpCookie("GatewayCookieKey","GatewayCookieValue"));
+
+                //往参数里面放，会报错，只能读
+                //queryParams.add("GatewayKey-param","GatewayValue-param");
+
+                return chain.filter(exchange);
+            });
         });
     }
 }
