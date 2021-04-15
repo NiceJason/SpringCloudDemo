@@ -1,5 +1,6 @@
 package com.nicebin.user;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -14,6 +15,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableRedisHttpSession
 @EnableAsync
 @EnableFeignClients
+@MapperScan("com.nicebin.user.mapper")
 public class UserServiceApplication {
 
     public static void main(String[] args) {

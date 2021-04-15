@@ -22,9 +22,9 @@ public class MybatisAutoGenerate {
         // Step2：全局配置
         GlobalConfig gc = new GlobalConfig();
         // 填写代码生成的目录(实际的项目想生成的路径，需要修改)
-        String projectPath = "D:\\djb\\idea-workplace\\springclouddemo\\common\\common-core";
+        String projectPath = "D:\\djb\\idea-workplace\\springclouddemo\\springcloud-service\\user-service";
         // 拼接出代码后续目录（这里目录最后还要+下面的父类包名和模块名才是最终路径）
-        gc.setOutputDir(projectPath + "/src/test/java");
+        gc.setOutputDir(projectPath + "/src/main/java");
 
         // 配置开发者信息（可选）（需要修改）
         gc.setAuthor("DiaoJianBin");
@@ -58,9 +58,9 @@ public class MybatisAutoGenerate {
         // Step:4：包配置
         PackageConfig pc = new PackageConfig();
         // 配置父包名（需要修改）
-        pc.setParent("com.nicebin.common.mybatis_generate");
+        pc.setParent("com.nicebin.user");
         // 配置模块名（需要修改）
-        pc.setModuleName("test_mybatis_plus");
+        //pc.setModuleName("test_mybatis_plus");
         // 配置 entity 包名
         pc.setEntity("entity");
         // 配置 mapper 包名
@@ -68,7 +68,8 @@ public class MybatisAutoGenerate {
         // 配置 service 包名
         pc.setService("service");
         // 配置 controller 包名
-        pc.setController("controller");
+        //pc.setController("controller");
+
         mpg.setPackageInfo(pc);
 
         // Step5：策略配置（数据库表配置）
