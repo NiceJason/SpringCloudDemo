@@ -15,7 +15,8 @@
         <maven.compiler.target>8</maven.compiler.target>
         <!--公共类版本-->
         <common-core.version>1.0.0</common-core.version>
-        <springcloud-config>1.0.0</springcloud-config>
+        <springcloud-config.version>1.0.0</springcloud-config.version>
+        <service-common-core.version>1.0.0</service-common-core.version>
         <redisdemo-spring-boot-starter.version>1.0.0</redisdemo-spring-boot-starter.version>
         <rabbitmqdemo-spring-boot-starter.version>1.0.0</rabbitmqdemo-spring-boot-starter.version>
 
@@ -35,6 +36,7 @@
         <mybatis-plus-boot-starter.version>3.4.0</mybatis-plus-boot-starter.version>
         <mybatis-plus-generator.version>3.3.2</mybatis-plus-generator.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
+        <druid-spring-boot-starter.version>1.2.5</druid-spring-boot-starter.version>
 
         <!--以下原本是spring-boot-starter-parent里面的-->
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
@@ -121,7 +123,14 @@
             <dependency>
                 <groupId>com.nicebin</groupId>
                 <artifactId>springcloud-config</artifactId>
-                <version>${springcloud-config}</version>
+                <version>${springcloud-config.version}</version>
+            </dependency>
+
+            <!--公共service配置-->
+            <dependency>
+                <groupId>com.nicebin</groupId>
+                <artifactId>service-common-core</artifactId>
+                <version>${service-common-core.version}</version>
             </dependency>
 
             <!--公共缓存-->
@@ -248,6 +257,12 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
+            <!--阿里连接池 druid-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter.version}</version>
+            </dependency>
 
             <!--以下2个是mybatis模板生成器-->
             <dependency>
@@ -263,6 +278,23 @@
 
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 
     <modules>
         <module>common</module>

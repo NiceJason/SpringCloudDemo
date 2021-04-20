@@ -20,17 +20,25 @@
 
     <dependencies>
 
+        <!--配置中心-->
+        <dependency>
+            <groupId>com.nicebin</groupId>
+            <artifactId>springcloud-config</artifactId>
+        </dependency>
+
         <!--公共类-->
         <dependency>
             <groupId>com.nicebin</groupId>
             <artifactId>common-core</artifactId>
         </dependency>
 
-        <!--公共配置-->
+
+        <!--服务公共类-->
         <dependency>
             <groupId>com.nicebin</groupId>
-            <artifactId>springcloud-config</artifactId>
+            <artifactId>service-common-core</artifactId>
         </dependency>
+
 
         <!--公共缓存-->
         <dependency>
@@ -85,12 +93,6 @@
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-nacos</artifactId>
-        </dependency>
-
-        <!--数据库相关-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

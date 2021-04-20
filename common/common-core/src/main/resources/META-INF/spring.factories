@@ -1,5 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration =\
   com.nicebin.common.config.feign.FeignConfig,\
-  com.nicebin.common.config.rest_template.RestTemplateConfig,\
-  com.nicebin.common.config.mybatis_plus.SystemMetaObjectHandle,\
-  com.nicebin.common.config.mybatis_plus.MybatisPlusConfig
+  com.nicebin.common.config.rest_template.RestTemplateConfig

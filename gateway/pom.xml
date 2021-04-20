@@ -21,17 +21,16 @@
     </properties>
 
     <dependencies>
+        <!--公共配置-->
+        <dependency>
+            <groupId>com.nicebin</groupId>
+            <artifactId>springcloud-config</artifactId>
+        </dependency>
 
         <!--公共类-->
         <dependency>
             <groupId>com.nicebin</groupId>
             <artifactId>common-core</artifactId>
-        </dependency>
-
-        <!--公共配置-->
-        <dependency>
-            <groupId>com.nicebin</groupId>
-            <artifactId>springcloud-config</artifactId>
         </dependency>
 
         <!--Nacos注册中心-->

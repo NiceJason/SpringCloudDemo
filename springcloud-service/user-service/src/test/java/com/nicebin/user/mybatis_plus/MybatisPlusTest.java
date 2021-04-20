@@ -1,6 +1,6 @@
 package com.nicebin.user.mybatis_plus;
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nicebin.user.entity.User;
@@ -108,29 +108,29 @@ public class MybatisPlusTest {
 
     /**
      * 测试版本号（乐观锁）
+     * 一定要查找出原来的数据（附带版本号），才能触发@Version更新
+     * 不然version字段为空的时候，不触发的
      */
     @Test
     public void testVersion() throws Exception{
         User user = new User();
-        user.setName("version-test");
+        user.setName("lili");
         user.setAge(11);
         user.setEmail("old@qq.com");
         userService.save(user);
-        userService.list().forEach((theUser)->{
-            //设置对应id，以便下面的更新操作
-            if(user.getName().equals(theUser.getName())){
-                user.setId(theUser.getId());
-            }
-        });
 
         //休息5秒，让更新时间离创建时间远一点
+        //假设这里是进行了其他的逻辑
         Thread.sleep(5 * 1000);
 
-        user.setAge(22);
-        user.setEmail("new@qq.com");
-        UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
-        userUpdateWrapper.eq("id",user.getId());
-        userService.update(user,userUpdateWrapper);
+        //查询数据库最新的内容
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("name","lili");
+        User user2 = userService.list(queryWrapper).get(0);
+        user2.setAge(66);
+        user2.setEmail("new@qq.com");
+
+        userService.updateById(user2);
         userService.list().forEach(System.out::println);
     }
 }

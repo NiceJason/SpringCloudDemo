@@ -23,5 +23,6 @@
         <module>rabbitmqdemo-spring-boot-starter</module>
         <module>redisdemo-spring-boot-starter</module>
         <module>springcloud-config</module>
+        <module>service-common-core</module>
     </modules>
 </project>
