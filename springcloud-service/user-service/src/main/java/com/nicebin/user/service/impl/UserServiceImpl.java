@@ -1,10 +1,14 @@
 package com.nicebin.user.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.nicebin.common.entity.ResultJson;
 import com.nicebin.user.entity.User;
 import com.nicebin.user.mapper.UserMapper;
 import com.nicebin.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     public void testVersion(String email, Integer age) {
+
         boolean success = false;
 
         while (!success) {
@@ -32,5 +37,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             success = updateById(user);
             System.out.println(Thread.currentThread().getName() + " 更新结果 " + success);
         }
+    }
+
+    public User testMapperMethod(){
+        User user = baseMapper.testSelect();
+        return user;
     }
 }

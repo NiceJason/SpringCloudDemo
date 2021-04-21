@@ -3,7 +3,7 @@
 <mapper namespace="com.nicebin.user.mapper.UserMapper">
     <!--根据id获取-->
     <select id="testSelect" resultType="com.nicebin.user.entity.User">
-        SELECT * FROM user
+        select * from user where id = 1
     </select>
     <!--新增-->
     <insert id="testInsert" parameterType="com.nicebin.user.entity.User">

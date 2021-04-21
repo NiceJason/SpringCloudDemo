@@ -15,7 +15,6 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableRedisHttpSession
 @EnableAsync
 @EnableFeignClients
-@MapperScan("com.nicebin.user.mapper")
 public class UserServiceApplication {
 
     public static void main(String[] args) {
