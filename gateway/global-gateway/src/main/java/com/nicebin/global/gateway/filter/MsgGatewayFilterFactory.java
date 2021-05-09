@@ -15,6 +15,7 @@ import org.springframework.util.StringUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 
@@ -67,6 +68,7 @@ public class MsgGatewayFilterFactory extends AbstractGatewayFilterFactory {
 
                 //操作头部，body,cookie
                 ServerHttpRequest request = exchange.getRequest();
+
                 HttpHeaders headers = request.getHeaders();
                 MultiValueMap<String, HttpCookie> cookies = request.getCookies();
                 MultiValueMap<String, String> queryParams = request.getQueryParams();
@@ -78,6 +80,14 @@ public class MsgGatewayFilterFactory extends AbstractGatewayFilterFactory {
 
                 //头部里面放值，会报错，这是个ReadOnlyHttpHeaders
                 //headers.add("GatewayKey-header","GatewayValue-header");
+                //想要设置要这样设，传输中文需要编码，不然乱码
+                try{
+                    request.mutate().header("GatewayKey-header", URLEncoder.encode("mutate的方式设置头的值是可以的","UTF-8"));
+                }catch (Exception e){
+                    System.out.println("Gateway头部设置信息出错");
+                    System.out.println(e);
+                }
+
 
                 //cookie里面放值，会报错，只能读
                 //cookies.add("GatewayKey-cookie",new HttpCookie("GatewayCookieKey","GatewayCookieValue"));

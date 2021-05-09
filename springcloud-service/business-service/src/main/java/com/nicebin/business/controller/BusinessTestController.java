@@ -62,7 +62,7 @@ public class BusinessTestController {
         System.out.println(newMessage);
         System.out.println("getSlowMessage 开始休息");
         try{
-            Thread.sleep(10 * 1000);
+            Thread.sleep(5 * 1000);
         }catch (Exception e){
 
         }

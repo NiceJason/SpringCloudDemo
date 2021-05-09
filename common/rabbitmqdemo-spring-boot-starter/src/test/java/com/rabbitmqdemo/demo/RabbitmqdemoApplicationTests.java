@@ -41,6 +41,7 @@ class RabbitmqdemoApplicationTests {
 //
 //        Channel channel = null;
         RabbitTemplateConfigurer aa=null;
+        MessageProperties messageProperties = new MessageProperties();
 
     }
 }

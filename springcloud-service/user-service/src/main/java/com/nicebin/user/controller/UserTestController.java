@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.net.URLDecoder;
 
 /**
  * @Author DiaoJianBin
@@ -73,7 +74,7 @@ public class UserTestController {
     }
 
     /**
-     * 这里会返回404的错误
+     *
      * @return
      */
     @GetMapping("/sendMessageToBlank")
@@ -85,6 +86,15 @@ public class UserTestController {
     public String sendMessageToBusiness(@PathVariable(value = "msg")String msg){
         log.info("日志记录 msg  = {}",msg);
         return  restTemplate.getForObject("http://business-service/test/getMessage/businessMessage",String.class);
+    }
+
+    /**
+     * 测试Ribbon重试
+     * @return
+     */
+    @GetMapping("/getSlowMessage")
+    public String getSlowMessage(){
+        return  restTemplate.postForObject("http://blank-service/test/getSlowMessage","userMessage",String.class);
     }
 
     @SneakyThrows
@@ -169,7 +179,8 @@ public class UserTestController {
      * @return
      */
     @RequestMapping("/testGateway")
-    public String testGateway(HttpServletRequest request){
+    public String testGateway(HttpServletRequest request) throws Exception{
+
         String appId = request.getParameter("appId");
         String msg = request.getParameter("msg");
 
@@ -180,9 +191,9 @@ public class UserTestController {
         HttpSession session = request.getSession();
         System.out.println("获取到从Gateway设置在Session里的值："+session.getAttribute("Gateway"));
 
-        //获取Gateway设置的头部，Gateway操作头只能读，获取不到东西的
+        //获取Gateway设置的头部
         String headerMsg = request.getHeader("GatewayKey-header");
-        System.out.println("获取Gateway设置的头部 ="+headerMsg);
+        System.out.println("获取Gateway设置的头部 = "+ URLDecoder.decode(headerMsg,"UTF-8"));
 
         //获取Gateway设置的cookie，Gateway操作cookie只能读，获取不到东西的
         Cookie[] cookies = request.getCookies();

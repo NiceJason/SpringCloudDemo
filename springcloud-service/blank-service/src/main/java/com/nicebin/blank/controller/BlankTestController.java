@@ -21,12 +21,7 @@ public class BlankTestController {
         String newMessage  = "Blank收到消息 "+message;
         System.out.println(newMessage);
 
-//        try{
-//            Thread.sleep(11 * 1000);
-//        }catch (Exception e){
-//
-//        }
-//        System.out.println("休息完毕");
+        System.out.println("休息完毕");
         return newMessage;
     }
 
@@ -38,17 +33,15 @@ public class BlankTestController {
 
     @PostMapping(value = "/getSlowMessage")
     public String getSlowMessage(HttpServletRequest request, @RequestBody String message){
-        String token = request.getHeader("token");
-        System.out.println("Blank收到token "+token);
-        String newMessage  = "Blank收到消息 "+message;
-        System.out.println(newMessage);
-        System.out.println("getSlowMessage 开始休息");
+        String threadName = Thread.currentThread().getName();
+
+        System.out.println(threadName+" 开始休息");
         try{
-            Thread.sleep(10 * 1000);
+            Thread.sleep(5 * 1000);
         }catch (Exception e){
 
         }
-        System.out.println("休息完毕");
-        return newMessage;
+        System.out.println(threadName+" 休息完毕");
+        return message;
     }
 }

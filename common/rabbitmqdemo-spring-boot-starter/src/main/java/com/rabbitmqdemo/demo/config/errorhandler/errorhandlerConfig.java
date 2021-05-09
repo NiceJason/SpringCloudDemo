@@ -1,22 +1,18 @@
 package com.rabbitmqdemo.demo.config.errorhandler;
 
 import com.rabbitmqdemo.demo.entity.TestInfo;
-import com.rabbitmqdemo.demo.exception.CustomException;
-import com.rabbitmqdemo.demo.exception.CustomFatalExceptionStrategy;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.listener.ConditionalRejectingErrorHandler;
 import org.springframework.amqp.rabbit.listener.api.RabbitListenerErrorHandler;
 import org.springframework.amqp.rabbit.support.ListenerExecutionFailedException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.ErrorHandler;
 
 /**
  * @Author DiaoJianBin
  * @Description 自定义错误处理的注册类
  * @Date 2021/2/25 15:05
  */
-@Configuration(proxyBeanMethods = false)
+@Configuration
 public class errorhandlerConfig {
 
     /**

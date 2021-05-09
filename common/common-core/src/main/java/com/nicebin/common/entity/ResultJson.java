@@ -1,5 +1,6 @@
 package com.nicebin.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nicebin.common.constant.ErrorCodeConsts;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class ResultJson implements Serializable {
+    @JsonIgnore
     private final long serialVersionUID = 1L;
     //消息状态码
     private String code;
@@ -27,8 +29,14 @@ public class ResultJson implements Serializable {
         this.data = data;
     }
 
-    public ResultJson(String code,Object data){
+    public ResultJson(String code,String msg){
         this.code = code;
+        this.msg = msg;
+    }
+
+    public ResultJson(String code,String msg,Object data){
+        this.code = code;
+        this.msg = msg;
         this.data = data;
     }
 }

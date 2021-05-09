@@ -37,6 +37,8 @@
         <mybatis-plus-generator.version>3.3.2</mybatis-plus-generator.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
         <druid-spring-boot-starter.version>1.2.5</druid-spring-boot-starter.version>
+        <elasticsearch-rest-high-level-client.version>7.10.2</elasticsearch-rest-high-level-client.version>
+        <elasticsearch.version>7.10.2</elasticsearch.version>
 
         <!--以下原本是spring-boot-starter-parent里面的-->
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
@@ -233,16 +235,6 @@
                 <version>${okhttp.version}</version>
             </dependency>
 
-            <!--重试机制-->
-
-
-            <!--消息队列-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-amqp</artifactId>
-                <version>${spring-boot.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -276,6 +268,18 @@
                 <version>${velocity-engine-core.version}</version>
             </dependency>
 
+            <!--Elasticsearch相关-->
+            <!-- 导入es的 rest-high-level-client-->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch-rest-high-level-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
