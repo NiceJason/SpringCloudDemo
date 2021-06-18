@@ -22,7 +22,7 @@ import java.time.Duration;
 /**
  * @Author DiaoJianBin
  * @Description   这是一个自定义的过滤器工厂类,要求有两个
- *  名字必须是 配置+GatewayFilterFactory  本类的配置字段是 Surprise
+ *  名字必须是 配置+GatewayFilterFactory
  *  必须继承 AbstractGatewayFilterFactory <配置类>
  *
  *               参考 https://blog.csdn.net/forezp/article/details/85057268
