@@ -17,7 +17,12 @@
     </properties>
 
     <dependencies>
-
+        <!--springboot生命周期测试-->
+        <dependency>
+            <groupId>com.nicebin</groupId>
+            <artifactId>springboot_lifecycle-spring-boot-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

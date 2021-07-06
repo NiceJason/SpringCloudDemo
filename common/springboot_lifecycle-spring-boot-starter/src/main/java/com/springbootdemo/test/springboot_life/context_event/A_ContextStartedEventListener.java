@@ -1,6 +1,5 @@
-package com.nicebin.user.system.test.context_event;
+package com.springbootdemo.test.springboot_life.context_event;
 
-import org.springframework.boot.context.event.ApplicationStartingEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextStartedEvent;
 
@@ -16,6 +15,8 @@ public class A_ContextStartedEventListener implements ApplicationListener<Contex
     @Override
     public void onApplicationEvent(ContextStartedEvent event) {
         String[] info = this.toString().split("\\.");
-        System.out.println("执行线程="+Thread.currentThread().getName()+" ，ContextStartedEvent事件被"+info[info.length-1]+"接收，执行次数="+ count.incrementAndGet());
+        String entityNum = info[info.length-1].split("@")[1];
+        String print = String.format("！！ContextStartedEvent事件被类@%s接收，执行次数=%s，%s线程执行！！",entityNum,count.incrementAndGet(),Thread.currentThread().getName());
+        System.out.println(print);
     }
 }

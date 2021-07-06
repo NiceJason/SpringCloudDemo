@@ -1,4 +1,4 @@
-package com.nicebin.user.system.test.run_listener;
+package com.springbootdemo.test.springboot_life.run_listener;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringApplicationRunListener;
@@ -37,6 +37,16 @@ public class TestSpringApplicationRunListener implements SpringApplicationRunLis
     @Override
     public void contextLoaded(ConfigurableApplicationContext context) {
         System.out.println("执行线程="+Thread.currentThread().getName()+" ，自定义contextLoaded");
+    }
+
+    @Override
+    public void started(ConfigurableApplicationContext context) {
+        System.out.println("执行线程="+Thread.currentThread().getName()+" ，自定义started");
+    }
+
+    @Override
+    public void running(ConfigurableApplicationContext context) {
+        System.out.println("执行线程="+Thread.currentThread().getName()+" ，自定义running");
     }
 
     @Override

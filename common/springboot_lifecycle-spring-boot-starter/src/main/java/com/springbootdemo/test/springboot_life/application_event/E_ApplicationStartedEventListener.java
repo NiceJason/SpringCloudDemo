@@ -1,10 +1,7 @@
-package com.nicebin.user.system.test.application_event;
+package com.springbootdemo.test.springboot_life.application_event;
 
-import org.springframework.boot.context.event.ApplicationPreparedEvent;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
-import org.springframework.boot.context.event.ApplicationStartingEvent;
 import org.springframework.context.ApplicationListener;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -18,6 +15,8 @@ public class E_ApplicationStartedEventListener implements ApplicationListener<Ap
     @Override
     public void onApplicationEvent(ApplicationStartedEvent event) {
         String[] info = this.toString().split("\\.");
-        System.out.println("执行线程="+Thread.currentThread().getName()+" ，ApplicationStartedEvent事件被"+info[info.length-1]+"接收，执行次数="+ count.incrementAndGet());
+        String entityNum = info[info.length-1].split("@")[1];
+        String print = String.format("ApplicationStartedEvent事件被类@%s接收，执行次数=%s，%s线程执行",entityNum,count.incrementAndGet(),Thread.currentThread().getName());
+        System.out.println(print);
     }
 }
