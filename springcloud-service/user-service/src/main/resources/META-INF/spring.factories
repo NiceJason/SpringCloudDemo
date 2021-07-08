@@ -1,0 +1,20 @@
+#Springboot的生命周期测试已经移至springbootdemo-spring-boot-starter项目
+
+# 自定义Springboot流程
+#org.springframework.boot.SpringApplicationRunListener=\
+#    com.nicebin.user.system.test.run_listener.TestSpringApplicationRunListener
+#
+## Application Listeners
+#org.springframework.context.ApplicationListener=\
+#  com.nicebin.user.system.test.application_event.A_ApplicationStartingEventListener,\
+#  com.nicebin.user.system.test.application_event.B_ApplicationEnvironmentPreparedEventListener,\
+#  com.nicebin.user.system.test.application_event.C_ApplicationContextInitializedEventListener,\
+#  com.nicebin.user.system.test.application_event.D_ApplicationPreparedEventListener,\
+#  com.nicebin.user.system.test.application_event.E_ApplicationStartedEventListener,\
+#  com.nicebin.user.system.test.application_event.F_ApplicationReadyEventListener,\
+#  com.nicebin.user.system.test.application_event.G_ApplicationFailedEventListener,\
+#  com.nicebin.user.system.test.context_event.A_ContextStartedEventListener,\
+#  com.nicebin.user.system.test.context_event.B_ContextRefreshedEventListener,\
+#  com.nicebin.user.system.test.context_event.C_ContextStoppedEventListener,\
+#  com.nicebin.user.system.test.context_event.D_ContextClosedEventListener
+  

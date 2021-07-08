@@ -1,0 +1,17 @@
+# 自定义Springboot流程
+org.springframework.boot.SpringApplicationRunListener=\
+    com.springbootdemo.test.springboot_life.run_listener.TestSpringApplicationRunListener
+
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+  com.springbootdemo.test.springboot_life.application_event.A_ApplicationStartingEventListener,\
+  com.springbootdemo.test.springboot_life.application_event.B_ApplicationEnvironmentPreparedEventListener,\
+  com.springbootdemo.test.springboot_life.application_event.C_ApplicationContextInitializedEventListener,\
+  com.springbootdemo.test.springboot_life.application_event.D_ApplicationPreparedEventListener,\
+  com.springbootdemo.test.springboot_life.application_event.E_ApplicationStartedEventListener,\
+  com.springbootdemo.test.springboot_life.application_event.F_ApplicationReadyEventListener,\
+  com.springbootdemo.test.springboot_life.context_event.A_ContextStartedEventListener,\
+  com.springbootdemo.test.springboot_life.context_event.B_ContextRefreshedEventListener,\
+  com.springbootdemo.test.springboot_life.context_event.C_ContextStoppedEventListener,\
+  com.springbootdemo.test.springboot_life.context_event.D_ContextClosedEventListener
+  
