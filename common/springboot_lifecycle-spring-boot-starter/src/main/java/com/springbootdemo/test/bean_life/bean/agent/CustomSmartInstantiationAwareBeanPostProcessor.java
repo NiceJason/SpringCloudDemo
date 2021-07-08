@@ -1,6 +1,7 @@
 package com.springbootdemo.test.bean_life.bean.agent;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.SmartInstantiationAwareBeanPostProcessor;
 import org.springframework.stereotype.Component;
 
@@ -26,18 +27,26 @@ public class CustomSmartInstantiationAwareBeanPostProcessor implements SmartInst
     @Override
     public Object getEarlyBeanReference(Object bean, String beanName) throws BeansException {
 
-        return studentAgent(bean,beanName);
+        Object obj = bean;
+        if("student".equals(beanName)){
+            obj = studentAgent(bean,beanName);
+        }
+        return obj;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        return studentAgent(bean,beanName);
+        Object obj = bean;
+        if("student".equals(beanName)){
+            obj = studentAgent(bean,beanName);
+        }
+        return obj;
     }
 
     private Object studentAgent(Object bean, String beanName){
         if ("student".equals(beanName)) {
             if(isStudentAgent){
-                System.out.println("学生类已经代理过啦");
+                System.out.println("CustomSmartInstantiationAwareBeanPostProcessor 学生类已经代理过啦[已被其他Bean调用了引用]");
             }else{
                 System.out.println("CustomSmartInstantiationAwareBeanPostProcessor 生成学生代理");
                 StudentInvocationHandle studentInvocationHandle = new StudentInvocationHandle(bean);

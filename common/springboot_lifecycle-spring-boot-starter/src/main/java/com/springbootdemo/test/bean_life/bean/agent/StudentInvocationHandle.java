@@ -23,10 +23,10 @@ public class StudentInvocationHandle implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
+        System.out.println("\nStudentInvocationHandle 执行[目标方法执行前]的代理逻辑");
         Object obj = method.invoke(target, args);
-        if("study".equals(method.getName())){
-            System.out.println("StudentInvocationHandle 业务执行后的代理输出");
-        }
+        System.out.println("StudentInvocationHandle 执行[目标方法执行后]的代理逻辑\n");
 
         return obj;
     }

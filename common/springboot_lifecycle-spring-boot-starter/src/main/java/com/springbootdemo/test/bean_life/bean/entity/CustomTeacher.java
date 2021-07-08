@@ -1,6 +1,4 @@
-package com.springbootdemo.test.bean_life.bean.third;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package com.springbootdemo.test.bean_life.bean.entity;
 
 /**
  * @Author DiaoJianBin

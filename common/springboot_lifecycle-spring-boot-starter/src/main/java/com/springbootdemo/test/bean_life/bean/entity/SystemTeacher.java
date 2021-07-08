@@ -1,4 +1,4 @@
-package com.springbootdemo.test.bean_life.bean.third;
+package com.springbootdemo.test.bean_life.bean.entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package com.springbootdemo.test.bean_life.bean_post_processor;
 
-import com.springbootdemo.test.bean_life.bean.third.CustomTeacher;
+import com.springbootdemo.test.bean_life.bean.entity.CustomTeacher;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ public class TeacherBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if("systemTeacher".equals(beanName)){
-            System.out.println("TeacherBeanPostProcessor开始替换教师");
+            System.out.println("\nTeacherBeanPostProcessor 开始替换教师\n");
             return new CustomTeacher();
         }
         return bean;
