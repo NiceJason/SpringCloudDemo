@@ -19,12 +19,13 @@ public class ErrorConsumer {
      * 预期是先进入cunsomErrorHandlerA，局部异常处理
      * 由于不是致命异常，无法进入全局消费者异常处理
      *
+     * concurrency = 3，即3个线程去处理
      * @param testInfo
      * @throws Exception
      */
-    @RabbitListener(queues = "errorTestQueue-A",errorHandler = "cunsomErrorHandlerA")
+    @RabbitListener(queues = "errorTestQueue-A",errorHandler = "cunsomErrorHandlerA",concurrency = "3")
     public void errorConsumerA(@Payload TestInfo testInfo) throws Exception{
-        System.out.println("errorConsumerA 接收到信息 "+testInfo.getInfo());
+        System.out.println(Thread.currentThread().getName()+" errorConsumerA 接收到信息 "+testInfo.getInfo());
         throw new CustomException("01","errorConsumerA 逻辑出错");
     }
 

@@ -11,12 +11,23 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
+ * @ControllerAdvice+ResponseBodyAdvice可以修改Controller的返回值
+ * 例如对body进行加密
+ *
  * @Author DiaoJianBin
  * @Description
  * @Date 2021/3/14 12:46
  */
 @ControllerAdvice
 public class ResponseBodyAnalysis implements ResponseBodyAdvice<ResultJson> {
+
+    /**
+     * 筛选类，返回true则进入下面的beforeBodyWrite方法
+     *
+     * @param returnType
+     * @param converterType
+     * @return
+     */
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         System.out.println("进入了support");

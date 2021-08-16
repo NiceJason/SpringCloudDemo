@@ -305,7 +305,6 @@
         <module>springcloud-service</module>
         <module>algorithm</module>
         <module>gateway</module>
-        <module>common/springbootdemo-spring-boot-starter</module>
     </modules>
 
 </project>

@@ -88,7 +88,6 @@ public class MsgGatewayFilterFactory extends AbstractGatewayFilterFactory {
                     System.out.println(e);
                 }
 
-
                 //cookie里面放值，会报错，只能读
                 //cookies.add("GatewayKey-cookie",new HttpCookie("GatewayCookieKey","GatewayCookieValue"));
 

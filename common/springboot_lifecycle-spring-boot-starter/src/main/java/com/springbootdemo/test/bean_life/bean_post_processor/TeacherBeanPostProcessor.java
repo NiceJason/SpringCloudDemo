@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author DiaoJianBin
- * @Description 将中间件的教师替换掉系统的
+ * @Description 用中间件的教师替换掉系统的
  * @Date 2021/7/6 15:19
  */
 @Component

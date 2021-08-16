@@ -17,12 +17,6 @@
     </properties>
 
     <dependencies>
-        <!--SpringBoot-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-parent</artifactId>
-        </dependency>
-
         <!--Springboot web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
