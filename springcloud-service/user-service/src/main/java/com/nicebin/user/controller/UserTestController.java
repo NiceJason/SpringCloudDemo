@@ -171,6 +171,7 @@ public class UserTestController {
                 "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"+
                 "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"+
                 "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+        System.out.println(Thread.currentThread().getName()+" 即将调用Feign");
         return  blankServiceTestClient.comfireMessage(longMsg);
     }
 

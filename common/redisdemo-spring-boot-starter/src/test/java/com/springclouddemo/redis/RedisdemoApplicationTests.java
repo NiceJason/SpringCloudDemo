@@ -1,17 +1,30 @@
 package com.springclouddemo.redis;
 
 import com.springclouddemo.redis.service.CacheService;
+import com.springclouddemo.redis.spring_event.event.SyncEvent;
+import com.springclouddemo.redis.spring_event.event.TestEvent;
+import lombok.SneakyThrows;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.*;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Set;
+import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
@@ -77,13 +90,25 @@ public class RedisdemoApplicationTests {
         RedisCacheManager aa;
     }
 
-//    @Test
-//    public void redissonTest() throws Exception{
-//        RLock rLock = redissonClient.getLock("mylock");
-//        rLock.lock();
-//        System.out.println("加锁了，开始处理业务");
-//        Thread.sleep(30*10000);
-//        System.out.println("业务处理完毕");
-//        rLock.unlock();
-//    }
+    @Autowired
+    ApplicationEventPublisher applicationEventPublisher;
+
+    @Test
+    @SneakyThrows
+    public void EventTest(){
+        HttpServletRequest request = null;
+        ServletInputStream inputStream = request.getInputStream();
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+        byte[] b = new byte[1024];
+        StringBuilder builder = new StringBuilder();
+        while (bufferedInputStream.available()!=-1){
+            bufferedInputStream.read(b);
+            builder.append(b.toString());
+        }
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+        reader.readLine();
+
+
+    }
 }

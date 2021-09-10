@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class UserFeignInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate template) {
-        System.out.println("例如在这里添加token");
+        System.out.println(Thread.currentThread().getName()+" 例如在这里添加token");
         template.header("token","123");
     }
 }
