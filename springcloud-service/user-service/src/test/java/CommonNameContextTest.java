@@ -14,6 +14,7 @@ public class CommonNameContextTest {
 
     @Test
     public void test() {
+        
         //创建 parent context
         AnnotationConfigApplicationContext parent = new AnnotationConfigApplicationContext();
         //添加 BaseConfig 相关配置
