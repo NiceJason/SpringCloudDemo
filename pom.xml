@@ -39,6 +39,7 @@
         <druid-spring-boot-starter.version>1.2.5</druid-spring-boot-starter.version>
         <elasticsearch-rest-high-level-client.version>7.10.2</elasticsearch-rest-high-level-client.version>
         <elasticsearch.version>7.10.2</elasticsearch.version>
+        <seata-spring-boot-starter.version>1.4.2</seata-spring-boot-starter.version>
 
         <!--以下原本是spring-boot-starter-parent里面的-->
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
@@ -209,6 +210,12 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.seata</groupId>
+                        <artifactId>seata-spring-boot-starter</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -279,6 +286,13 @@
                 <groupId>org.elasticsearch</groupId>
                 <artifactId>elasticsearch</artifactId>
                 <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <!--Seata分布式事务-->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata-spring-boot-starter.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

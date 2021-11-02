@@ -58,5 +58,11 @@
             <artifactId>velocity-engine-core</artifactId>
         </dependency>
 
+        <!--Seata相关-->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+            <version>1.4.2</version>
+        </dependency>
     </dependencies>
 </project>

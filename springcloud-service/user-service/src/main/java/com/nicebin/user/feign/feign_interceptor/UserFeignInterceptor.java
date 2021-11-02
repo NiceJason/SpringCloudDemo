@@ -2,6 +2,7 @@ package com.nicebin.user.feign.feign_interceptor;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import io.seata.core.context.RootContext;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,5 +16,12 @@ public class UserFeignInterceptor implements RequestInterceptor {
     public void apply(RequestTemplate template) {
         System.out.println(Thread.currentThread().getName()+" 例如在这里添加token");
         template.header("token","123");
+
+        //Seata事务需要在这添加xid
+        String xid = RootContext.getXID();
+        System.out.println("Seata的xid="+xid);
+        if(xid != null){
+            template.header(RootContext.KEY_XID,xid);
+        }
     }
 }

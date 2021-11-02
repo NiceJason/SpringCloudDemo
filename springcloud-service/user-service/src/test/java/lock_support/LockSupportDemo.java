@@ -20,7 +20,7 @@ public class LockSupportDemo {
         @Override
         @SneakyThrows
         public void run() {
-            synchronized (u) {
+
                 System.out.println("-------"+"in  "+ getName());
                 sleep(10 * 1000);
                 System.out.println("醒了");
@@ -30,7 +30,7 @@ public class LockSupportDemo {
                     System.out.println("-------"+getName()+" 被中断了");
                 }
                 System.out.println("-------"+getName()+" 继续执行");
-            }
+
         }
     }
 

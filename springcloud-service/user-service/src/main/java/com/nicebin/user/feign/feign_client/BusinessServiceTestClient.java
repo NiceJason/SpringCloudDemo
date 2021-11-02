@@ -20,16 +20,16 @@ import org.springframework.web.multipart.MultipartFile;
  * @Date 2021/3/11 11:23
  */
 @Primary
-@FeignClient(value = "business-service",path = "/test",decode404 = true,fallbackFactory = BusinessServiceTestFallballFactory.class)
+@FeignClient(value = "business-service",decode404 = true,fallbackFactory = BusinessServiceTestFallballFactory.class)
 public interface BusinessServiceTestClient {
 
-    @GetMapping(value = "/getMessage/{message}")
+    @GetMapping(value = "/test/getMessage/{message}")
     String comfireMessage(@PathVariable(value = "message")String message);
 
-    @RequestMapping(value = "/testFile",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE,method = RequestMethod.POST)
+    @RequestMapping(value = "/test/testFile",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE,method = RequestMethod.POST)
     ResultJson testFile(@RequestPart(value = "files") MultipartFile[] files,@RequestParam(value = "msg") String msg);
 
-    @RequestMapping(value = "/throwExceptionTest",method = RequestMethod.POST)
+    @RequestMapping(value = "/test/throwExceptionTest",method = RequestMethod.POST)
     String throwExceptionTest(@RequestBody String msg);
 
     /**
@@ -38,6 +38,13 @@ public interface BusinessServiceTestClient {
      * @param message
      * @return
      */
-    @PostMapping(value = "/getSlowMessage")
+    @PostMapping(value = "/test/getSlowMessage")
     String getSlowMessage(@RequestBody String message);
+
+    /**
+     * 测试seata分布式事务
+     * @return
+     */
+    @PostMapping("/seata/insertBusiness")
+    String insertBusiness();
 }

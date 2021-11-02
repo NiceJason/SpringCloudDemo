@@ -2,6 +2,7 @@ package com.nicebin.user.feign.feign_fallback;
 
 import com.nicebin.common.constant.ErrorCodeConsts;
 import com.nicebin.common.entity.ResultJson;
+import com.nicebin.common.exception.SystemException;
 import com.nicebin.user.feign.feign_client.BusinessServiceTestClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,5 +36,11 @@ public class BusinessServiceTestClientFallback implements BusinessServiceTestCli
     public String getSlowMessage(String message) {
         System.out.println("FeignClient：getSlowMessage 方法服务降级");
         return "FeignClient：getSlowMessage 方法服务降级";
+    }
+
+    @Override
+    public String insertBusiness() {
+        System.out.println("FeignClient：insertBusiness 方法服务降级");
+        throw new SystemException("FeignClient：insertBusiness 方法服务降级");
     }
 }
