@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.nicebin</groupId>
-        <artifactId>springcloud</artifactId>
+        <artifactId>springclouddemo</artifactId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -17,7 +17,6 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
     <dependencies>
 
         <!--配置中心-->
@@ -25,13 +24,6 @@
             <groupId>com.nicebin</groupId>
             <artifactId>springcloud-config</artifactId>
         </dependency>
-
-        <!--公共类-->
-        <dependency>
-            <groupId>com.nicebin</groupId>
-            <artifactId>common-core</artifactId>
-        </dependency>
-
 
         <!--服务公共类-->
         <dependency>
@@ -50,11 +42,6 @@
         <dependency>
             <groupId>com.nicebin</groupId>
             <artifactId>rabbitmqdemo-spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!--Nacos注册中心-->
@@ -97,9 +84,8 @@
     </dependencies>
 
     <modules>
-        <module>blank-service</module>
-        <module>business-service</module>
-        <module>user-service</module>
-        <module>resources-service</module>
+        <module>provider-service</module>
+        <module>consumer-service</module>
+        <module>search-service</module>
     </modules>
 </project>

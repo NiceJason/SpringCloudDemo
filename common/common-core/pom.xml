@@ -51,17 +51,6 @@
             <version>1.4.1</version>
             <scope>compile</scope>
         </dependency>
-
-        <!--Elasticsearch相关-->
-        <!-- 导入es的 rest-high-level-client-->
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>elasticsearch-rest-high-level-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.elasticsearch</groupId>
-            <artifactId>elasticsearch</artifactId>
-        </dependency>
     </dependencies>
 
     <build>

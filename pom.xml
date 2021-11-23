@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.nicebin</groupId>
-    <artifactId>springcloud</artifactId>
+    <artifactId>springclouddemo</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -19,6 +19,8 @@
         <service-common-core.version>1.0.0</service-common-core.version>
         <redisdemo-spring-boot-starter.version>1.0.0</redisdemo-spring-boot-starter.version>
         <rabbitmqdemo-spring-boot-starter.version>1.0.0</rabbitmqdemo-spring-boot-starter.version>
+        <demo-api.version>1.0.0</demo-api.version>
+        <elasticsearch-spring-boot-starter.version>1.0.0</elasticsearch-spring-boot-starter.version>
 
         <spring-boot-starter-parent.version>2.3.2.RELEASE</spring-boot-starter-parent.version>
         <aspectj.aspectjrt.version>1.8.10</aspectj.aspectjrt.version>
@@ -150,6 +152,19 @@
                 <version>${rabbitmqdemo-spring-boot-starter.version}</version>
             </dependency>
 
+            <!--服务的api-->
+            <dependency>
+                <groupId>com.nicebin</groupId>
+                <artifactId>demo-api</artifactId>
+                <version>${demo-api.version}</version>
+            </dependency>
+
+            <!--elasticsearch相关-->
+            <dependency>
+                <groupId>com.nicebin</groupId>
+                <artifactId>elasticsearch-spring-boot-starter</artifactId>
+                <version>${elasticsearch-spring-boot-starter.version}</version>
+            </dependency>
             <!--SpringBoot-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -317,8 +332,8 @@
     <modules>
         <module>common</module>
         <module>springcloud-service</module>
-        <module>algorithm</module>
         <module>gateway</module>
+        <module>demo-api</module>
     </modules>
 
 </project>

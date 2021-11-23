@@ -18,6 +18,22 @@
     </properties>
 
     <dependencies>
+        <!--公共类-->
+        <dependency>
+            <groupId>com.nicebin</groupId>
+            <artifactId>common-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--spring-boot-validation-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
 
         <!--公共配置-->
         <dependency>
@@ -56,13 +72,6 @@
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
-        </dependency>
-
-        <!--Seata相关-->
-        <dependency>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
-            <version>1.4.2</version>
         </dependency>
     </dependencies>
 </project>

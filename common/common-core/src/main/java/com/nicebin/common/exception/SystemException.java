@@ -1,6 +1,6 @@
 package com.nicebin.common.exception;
 
-import com.nicebin.common.constant.ErrorCodeConsts;
+import com.nicebin.api.core.ResultCode;
 import lombok.Data;
 
 /**
@@ -16,7 +16,7 @@ public class SystemException extends RuntimeException {
 
     public SystemException(String msg){
         super(msg);
-        this.code = ErrorCodeConsts.ERROR;
+        this.code = ResultCode.ERROR;
         this.msg = msg;
     }
 
