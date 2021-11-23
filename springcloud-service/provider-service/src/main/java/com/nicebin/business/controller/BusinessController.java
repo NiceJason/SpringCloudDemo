@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/test")
-public class BusinessTestController {
+public class BusinessController {
 
     @GetMapping(value = "/getMessage/{message}")
     public String comfireMessage(@PathVariable(value = "message")String message){

@@ -6,16 +6,13 @@
 
 本项目是基于SpringCloud搭建的，里面使用到的知识，有些会分享在<a href='https://www.cnblogs.com/top-housekeeper/'>我的博客</a>，有任何疑问欢迎`留言和讨论`
 
-如果想使用本项目，需要安装`Redis`，`Mysql`，`RabbitMQ`,`ElasticSearch`,`Nacos`,`Sentinel-dashboard`
-每一项安装都能百度到，很简单就能装好的
-由于我的配置都通过nacos读取的，所以装好nacos后，导入common-config里的nacos配置包就好啦
-最后再根据你安装的ip，端口，账号密码等修改其中的配置就OK，都是有注释说明的
+如果想使用本项目，请看：https://github.com/NiceJason/SpringCloudDemo/wiki/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97
 
 >咳咳，如果有收获的话记得给个赞哦！
 
 项目演示地址：目前还没部署到服务器呢
 
-以下编辑更新于：2021/05/10
+以下编辑更新于：2021/11/23
 
 ## :loudspeaker:项目主要用到的技术
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController()
 @RequestMapping("/seata")
-public class SeataTestController {
+public class SeataController {
     @Autowired
     BusinessService businessService;
 

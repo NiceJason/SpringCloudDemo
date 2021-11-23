@@ -48,8 +48,6 @@
         <dependency>
             <groupId>com.alibaba.nacos</groupId>
             <artifactId>nacos-api</artifactId>
-            <version>1.4.1</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
