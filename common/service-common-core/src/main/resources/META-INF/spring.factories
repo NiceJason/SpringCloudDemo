@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration =\
   com.nicebin.service.config.mybatis_plus.SystemMetaObjectHandle,\
-  com.nicebin.service.config.mybatis_plus.MybatisPlusConfig
+  com.nicebin.service.config.mybatis_plus.MybatisPlusConfig,\
+  com.nicebin.service.handle.GlobalExceptionHandler

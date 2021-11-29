@@ -87,5 +87,6 @@
         <module>provider-service</module>
         <module>consumer-service</module>
         <module>search-service</module>
+        <module>dubbo-provider-service</module>
     </modules>
 </project>

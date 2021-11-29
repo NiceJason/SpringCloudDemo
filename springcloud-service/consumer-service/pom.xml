@@ -16,7 +16,7 @@
     </properties>
 
     <dependencies>
-        <!--springboot生命周期测试-->
+        <!--springboot生命周期测试，打开后会在控制台打印生命周期-->
         <!--        <dependency>-->
         <!--            <groupId>com.nicebin</groupId>-->
         <!--            <artifactId>springboot_lifecycle-spring-boot-starter</artifactId>-->
@@ -27,6 +27,12 @@
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!--dubbo-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-dubbo</artifactId>
         </dependency>
     </dependencies>
 

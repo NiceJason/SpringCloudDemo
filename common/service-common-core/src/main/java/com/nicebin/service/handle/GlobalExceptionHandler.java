@@ -1,4 +1,4 @@
-package com.nicebin.service.config.handle;
+package com.nicebin.service.handle;
 
 import com.nicebin.api.core.Result;
 import com.nicebin.api.core.ResultCode;
@@ -8,7 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.converter.HttpMessageConversionException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -34,6 +37,21 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public Result handleException(HttpRequestMethodNotSupportedException e) {
         return new Result(ResultCode.PARAMETER_ERROR, "不支持该请求方式："+e.getMethod());
+    }
+
+    /**
+     * 参数校验异常
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseBody
+    public Result handleException(MethodArgumentNotValidException e) {
+        BindingResult bindingResult = e.getBindingResult();
+        String errorMesssage = "参数有误:";
+        for (FieldError fieldError : bindingResult.getFieldErrors()) {
+            errorMesssage += fieldError.getDefaultMessage() + " ";
+        }
+
+        return new Result(ResultCode.PARAMETER_ERROR, errorMesssage);
     }
 
     /**
@@ -127,7 +145,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 自定义业务异常
+     * Feign调用异常
      */
     @ExceptionHandler(FeignException.class)
     @ResponseBody
@@ -136,7 +154,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 自定义业务异常
+     * 参数异常
      */
     @ExceptionHandler(MissingServletRequestPartException.class)
     @ResponseBody

@@ -61,7 +61,6 @@
             <version>${lombok.version}</version>
         </dependency>
 
-
         <!--fastJson-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -280,6 +279,7 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
+
             <!--阿里连接池 druid-->
             <dependency>
                 <groupId>com.alibaba</groupId>

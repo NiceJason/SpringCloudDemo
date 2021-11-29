@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nicebin.dubbo.mapper.BusinessMapper">
+
+    <!--自定义某个javaBean的封装规则,使用标签为 resultMap
+        type：自定义规则的Java类型
+        id: 这个resultMap的唯一标识
+    -->
+    <resultMap type="com.nicebin.api.dubbo.provider.vo.BusinessVO" id="BusinessVO">
+        <!--指定主键列的封装规则
+        id： 使用该标签，定义主键会底层有优化；当然也可以使用result。推荐使用id
+        column：指定数据库中哪一列
+        property：指定对应的javaBean属性
+          -->
+        <id column="businessId" property="businessId"/>
+        <!-- 其他不指定的列会自动封装：但推荐写完整。 -->
+    </resultMap>
+
+
+    <!--新增-->
+    <insert id="save" parameterType="com.nicebin.dubbo.entity.Business" useGeneratedKeys="true" keyProperty="businessId">
+        insert into business(name) values (#{name})
+    </insert>
+
+    <select id="select" resultMap="BusinessVO">
+        select *
+        from business
+        where businessId = #{businessId}
+    </select>
+</mapper>
