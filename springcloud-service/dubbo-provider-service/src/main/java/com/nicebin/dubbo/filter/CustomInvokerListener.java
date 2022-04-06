@@ -8,7 +8,7 @@ import org.apache.dubbo.rpc.RpcException;
 /**
  * 自定义服务引用监听
  * 当有服务引用时，触发该事件
- * 实际情况没测试怎么用的
+ * 实际情况没测试出怎么用的
  * @Author DiaoJianBin
  * @Date 2021/11/26 17:01
  */

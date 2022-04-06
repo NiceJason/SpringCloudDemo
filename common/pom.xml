@@ -34,5 +34,6 @@
         <module>springcloud-config</module>
         <module>springboot_lifecycle-spring-boot-starter</module>
         <module>elasticsearch-spring-boot-starter</module>
+        <module>rocketmqdemo-spring-boot-starter</module>
     </modules>
 </project>

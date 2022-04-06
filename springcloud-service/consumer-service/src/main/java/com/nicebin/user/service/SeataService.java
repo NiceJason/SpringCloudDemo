@@ -22,13 +22,14 @@ public class SeataService extends ServiceImpl<UserMapper, User> {
     RpcApi rpcApi;
 
     @GlobalTransactional
-    public void insertUserAndBusiness(){
+    public String insertUserAndBusiness(){
         User user = new User();
         user.setId(100L);
         user.setName("张三");
         baseMapper.testInsert(user);
 
         rpcApi.insertBusiness();
+        return "seata事务成功执行";
     }
 
     @GlobalTransactional

@@ -1,18 +1,19 @@
 package com.nicebin.business;
 
 import org.junit.jupiter.api.Test;
+import org.redisson.misc.Hash;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.HashMap;
-import java.util.Set;
+import java.time.Instant;
+import java.util.*;
 
 class BusinessServiceApplicationTests {
 
     @Test
-    void contextLoads() {
-        Integer a =129,b=129;
-        System.out.println( a == 129);
-        System.out.println(a == b);
+    void test() {
+        Set set = new HashSet();
+        Instant A;
+        Date a;
     }
 
 }

@@ -8,12 +8,13 @@ import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import org.apache.ibatis.plugin.Interceptor;
 import org.junit.jupiter.api.Test;
 
 /**
  * Mybatis模板生成器
  */
-public class MybatisAutoGenerate {
+public class MybatisAutoGenerate{
     @Test
     public void autoGenerate() {
         // Step1：代码生成器

@@ -1,14 +1,11 @@
 package com.nicebin.api.dubbo.fallback;
 
-import com.alibaba.csp.sentinel.adapter.dubbo.config.DubboAdapterGlobalConfig;
 import com.alibaba.csp.sentinel.adapter.dubbo.fallback.DubboFallback;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.apache.dubbo.rpc.AsyncRpcResult;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
 import org.apache.dubbo.rpc.Result;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * @Author DiaoJianBin

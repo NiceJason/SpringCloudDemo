@@ -43,6 +43,8 @@
         <elasticsearch-rest-high-level-client.version>7.10.2</elasticsearch-rest-high-level-client.version>
         <elasticsearch.version>7.10.2</elasticsearch.version>
         <seata-spring-boot-starter.version>1.4.2</seata-spring-boot-starter.version>
+        <rocketmq-client.version>4.9.1</rocketmq-client.version>
+        <rocketmq-spring-boot-starter.version>2.2.0</rocketmq-spring-boot-starter.version>
 
         <!--以下原本是spring-boot-starter-parent里面的-->
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
@@ -317,6 +319,20 @@
                 <groupId>io.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
                 <version>${seata-spring-boot-starter.version}</version>
+            </dependency>
+
+
+            <!--rocketmq-->
+<!--            <dependency>-->
+<!--                <groupId>org.apache.rocketmq</groupId>-->
+<!--                <artifactId>rocketmq-client</artifactId>-->
+<!--                <version>${rocketmq-client.version}</version>-->
+<!--            </dependency>-->
+
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq-spring-boot-starter.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

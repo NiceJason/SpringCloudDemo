@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
  * @Description BusinessServiceTestClient服务降级的地方
  * @Date 2021/3/12 16:00
  */
-@Component
 public class RpcApiFallback implements RpcApi {
     @Setter
     Throwable cause;
