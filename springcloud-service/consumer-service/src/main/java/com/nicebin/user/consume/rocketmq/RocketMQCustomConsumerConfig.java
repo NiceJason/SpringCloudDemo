@@ -2,6 +2,7 @@ package com.nicebin.user.consume.rocketmq;
 
 import com.rabbitmq.client.DefaultConsumer;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -13,5 +14,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 public class RocketMQCustomConsumerConfig {
 
-
+    @Bean
+    public DefaultMQPushConsumer rocketMQCustomConsumer(){
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer();
+        consumer.setConsumerGroup("CustomConsumer");
+        return consumer;
+    }
 }
